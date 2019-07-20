@@ -15,7 +15,6 @@ class ProteinVisVC : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("come on")
         print("ProteinVisVC :our protein is  \(protein)")
         // Do any additional setup after loading the view.
     }
