@@ -85,7 +85,7 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
     
     
 }
-//tutorial from here! https://www.raywenderlich.com/472-uisearchcontroller-tutorial-getting-started
+//tutorial from here! https://www.raywenderlich.com/472-uisearchcontroller-tutorial-getting-started still more functionality can be implemented so please //TODO check it out again
 
 extension ListProteinsVC: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
