@@ -61,11 +61,11 @@ class LoginViewController: UIViewController {
     
     func evokeVC(){
         
-                                    let storyboard = UIStoryboard.init(name: "ListProteins", bundle: nil)
-                                    let vc = storyboard.instantiateViewController(withIdentifier : "ListProteinsVC")
+//                                    let storyboard = UIStoryboard.init(name: "ListProteins", bundle: nil)
+//                                    let vc = storyboard.instantiateViewController(withIdentifier : "ListProteinsVC")
         
-        //performSegue(withIdentifier: "ListProteinsSegue", sender: self)
-                                   self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "ListProteinsSegue", sender: self)
+                                 //  self.navigationController?.pushViewController(vc, animated: true)
         
 
     }

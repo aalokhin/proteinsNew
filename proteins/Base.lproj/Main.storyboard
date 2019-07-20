@@ -32,7 +32,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HKb-2e-Hq5"/>
                     <connections>
-                        <segue destination="dTc-5h-xhd" kind="show" id="08b-Xs-cZz"/>
+                        <segue destination="dTc-5h-xhd" kind="show" identifier="ListProteinsSegue" id="08b-Xs-cZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
