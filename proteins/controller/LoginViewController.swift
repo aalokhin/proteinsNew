@@ -37,6 +37,13 @@ class LoginViewController: UIViewController {
                     if success {
                         print("success")
                         
+                        
+                        
+                        self.evokeVC()
+                        
+                        
+                        
+                        
                         //self.runSecretCode()
                     } else {
                         let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
@@ -50,6 +57,17 @@ class LoginViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         }
+    }
+    
+    func evokeVC(){
+        
+                                    let storyboard = UIStoryboard.init(name: "ListProteins", bundle: nil)
+                                    let vc = storyboard.instantiateViewController(withIdentifier : "ListProteinsVC")
+        
+        //performSegue(withIdentifier: "ListProteinsSegue", sender: self)
+                                   self.navigationController?.pushViewController(vc, animated: true)
+        
+
     }
 }
 
