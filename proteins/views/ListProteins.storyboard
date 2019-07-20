@@ -18,18 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-g5-mcn">
-                                <rect key="frame" x="16" y="236" width="343" height="423"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-g5-mcn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="rpp-jM-B3D">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rpp-jM-B3D" id="j7U-g9-nEn">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HhK-6P-DuF" kind="show" identifier="ShowProtein" id="GIa-4q-zgz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -39,6 +41,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nmf-g5-mcn" firstAttribute="top" secondItem="PK7-1h-Nem" secondAttribute="top" id="CwZ-i6-qZq"/>
+                            <constraint firstItem="PK7-1h-Nem" firstAttribute="trailing" secondItem="nmf-g5-mcn" secondAttribute="trailing" id="RHo-xQ-YpL"/>
+                            <constraint firstItem="PK7-1h-Nem" firstAttribute="bottom" secondItem="nmf-g5-mcn" secondAttribute="bottom" id="cG0-9t-hS8"/>
+                            <constraint firstItem="nmf-g5-mcn" firstAttribute="leading" secondItem="PK7-1h-Nem" secondAttribute="leading" id="hFj-NN-FLE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PK7-1h-Nem"/>
                     </view>
                     <connections>
@@ -48,6 +56,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xxl-EJ-YPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="124" y="-215.44227886056973"/>
+        </scene>
+        <!--ProteinVis-->
+        <scene sceneID="6i6-ge-R5J">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ProteinVis" id="HhK-6P-DuF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XKq-wa-cb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631" y="-305"/>
         </scene>
     </scenes>
 </document>

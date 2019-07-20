@@ -83,6 +83,35 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+        case "ShowProtein":
+            // 1
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let protein : String
+            if isFiltering() {
+                protein = filteredProteins[indexPath.row]
+            } else {
+                protein = unFilteredProteins[indexPath.row]
+            }
+            // 2
+            // 3
+            let destination = segue.destination as! ProteinVisVC
+            // 4
+            destination.protein = protein
+            
+        case "addNote":
+            print("create note bar button item tapped")
+            
+        default:
+            print("unexpected segue identifier")
+        }
+    }
+
+    
     
 }
 //tutorial from here! https://www.raywenderlich.com/472-uisearchcontroller-tutorial-getting-started still more functionality can be implemented so please //TODO check it out again
