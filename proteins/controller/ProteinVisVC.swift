@@ -36,11 +36,13 @@ class ProteinVisVC : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
         
         // Do any additional setup after loading the view.
     }
     
+  
     func sceneSetup() {
 
         let scene = SCNScene()
@@ -175,8 +177,32 @@ extension ProteinVisVC {
         }
         
     }
+   //plagiat from Stac Ovrflow
+    @objc func share(sender:UIView){
+        let image : UIImage = sceneView.snapshot()
+        
+        let imageToShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+       // activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
+        
+//        let message = "Message goes here."
+//        //Set the link to share.
+//        if let link = NSURL(string: "http://intra.42.fr")
+//        {
+//            let objectsToShare = [message,link] as [Any]
+//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+//            self.present(activityVC, animated: true, completion: nil)
+//        }
+        
+    }
     
-    
- 
 }
 
