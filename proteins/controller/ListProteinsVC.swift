@@ -38,7 +38,7 @@ class ListProteinsVC: UIViewController {
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredProteins = unFilteredProteins.filter({( protein : String) -> Bool in
-            print(protein.lowercased().contains(searchText.lowercased()))
+            //print(protein.lowercased().contains(searchText.lowercased()))
             return protein.lowercased().contains(searchText.lowercased())
         })
         
@@ -55,7 +55,7 @@ class ListProteinsVC: UIViewController {
     }
     
     func isFiltering() -> Bool {
-        print("is filtering......")
+        //print("is filtering......")
         return searchController.isActive && !searchBarIsEmpty()
     }
 }

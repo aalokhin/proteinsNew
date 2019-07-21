@@ -20,7 +20,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func fingerPrintAuthenticationTapped(_ sender: UIButton) {
-        authenticateUser()
+        self.evokeVC()
+
+       //authenticateUser()
     }
     
     func authenticateUser() {
@@ -36,9 +38,7 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
                     if success {
                         print("success")
-                        
-                        
-                        
+
                         self.evokeVC()
                         
                         
