@@ -36,7 +36,7 @@ class ProteinVisVC : UIViewController{
                 return
             } else if let r = response as? HTTPURLResponse, let d = data {
                 
-                print(r.statusCode)
+                print(" our response code is \(r.statusCode)")
 //                print(data)
 //                Dispa
    
