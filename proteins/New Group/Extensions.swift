@@ -13,4 +13,8 @@ extension String {
         
         return (self as NSString).floatValue
     }
+    
+    func toSingleSpaceLine () ->String {
+       return self.components(separatedBy: " ").filter { !$0.isEmpty }.joined(separator: " ")
+    }
 }

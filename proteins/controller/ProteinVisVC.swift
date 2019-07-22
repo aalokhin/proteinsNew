@@ -71,18 +71,18 @@ class ProteinVisVC : UIViewController{
         for atom in self.atoms {
           //  let trimmed = atom.componentsSeparatedBy(" ").filter { !$0.isEmpty }.joinWithSeparator(" ")\
             
-           let new = atom.components(separatedBy: " ").filter { !$0.isEmpty }.joined(separator: " ")
+//           let new = atom.components(separatedBy: " ").filter { !$0.isEmpty }.joined(separator: " ")
            
             
-            let split = new.components(separatedBy: " ")
+            let split = atom.toSingleSpaceLine().components(separatedBy: " ")
             
-            print(">\(new)<") // >Simple text with spaces<
+           // print(">\(new)<") // >Simple text with spaces<
             
-            print( split)
+          //  print( split)
             let x : Float = split[6].toFloat()
             let y : Float = split[7].toFloat()
             let z : Float = split[8].toFloat()
-            print(x, y, z)
+           
             
             let unit = SCNNode(geometry: carbonAtom())
             unit.position = SCNVector3Make(x, y, z)
@@ -94,16 +94,6 @@ class ProteinVisVC : UIViewController{
     
     
 }
-
-
-
-
-
-
-
-
-
-
 
 
 extension ProteinVisVC {
