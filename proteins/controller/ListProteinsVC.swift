@@ -43,6 +43,8 @@ class ListProteinsVC: UIViewController {
     }
     
     func readFromFile(){
+        
+        /* File is being uploaded from Intra now which actually sucks */
         let path = URL(string: "https://projects.intra.42.fr/uploads/document/document/312/ligands.txt")
         
         do {
@@ -78,9 +80,6 @@ class ListProteinsVC: UIViewController {
             // Get the contents
            // let contents = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
             //print(contents)
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
         }
     }
     
