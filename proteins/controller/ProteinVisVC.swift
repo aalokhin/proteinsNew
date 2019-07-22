@@ -9,6 +9,9 @@
 /* Tutorial:  https://www.raywenderlich.com/2243-scene-kit-tutorial-getting-started
  */
 
+// https://files.rcsb.org/ligands/view/HEM_ideal.pdb
+// https://files.rcsb.org/ligands/view/HEM_model.pdb
+// https://projects.intra.42.fr/projects/swifty-proteins/projects_users/1401144
 
 /*
  View: The HTTP/HTTPS response headers to the client are set with: Content-Type: text/plain
@@ -22,6 +25,8 @@ import SceneKit
 
 class ProteinVisVC : UIViewController{
     
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sceneView: SCNView!
     var protein : String = ""
     var modelString : String = ""
@@ -29,11 +34,15 @@ class ProteinVisVC : UIViewController{
     var atoms : [String] = []
     var connections : [String] = []
     
+    var atomsClass : [Atom] = []
     
-    var geometryNode: SCNNode = SCNNode()
+    
+    var geometryNodeAtom : SCNNode = SCNNode()
+    var geometryNodeCon : SCNNode = SCNNode()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
         
@@ -49,10 +58,12 @@ class ProteinVisVC : UIViewController{
         sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
         
-        geometryNode = allAtoms()
+        geometryNodeAtom = allAtoms()
+        geometryNodeCon = allConnections()
 
         
-        sceneView.scene!.rootNode.addChildNode(geometryNode)
+        sceneView.scene!.rootNode.addChildNode(geometryNodeAtom)
+        sceneView.scene!.rootNode.addChildNode(geometryNodeCon)
         
         
     }
@@ -68,23 +79,112 @@ class ProteinVisVC : UIViewController{
         let atomsNode = SCNNode()
         for atom in self.atoms {
             let split = atom.toSingleSpaceLine().components(separatedBy: " ")
-            
             let x : Float = split[6].toFloat()
             let y : Float = split[7].toFloat()
             let z : Float = split[8].toFloat()
+            let seqNr : Int = split[1].toInt()
             
             
-            let atom = Atom(x : x, y : y, z : z, element: split[11])
+            
+            let atom = Atom(x : x, y : y, z : z, el : split[11], seqNr : seqNr)
+            atomsClass.append(atom)
             let unit = SCNNode(geometry: atom.atomGeometry())
             unit.position = atom.position()
-            
-            
 //            unit.position = SCNVector3Make(x, y, z)
         
             atomsNode.addChildNode(unit)
         }
+        print("here we go these are number of atoms=> \(atomsClass.count)")
         return atomsNode
     }
+    
+    func allConnections() -> SCNNode{
+        let connectionsNode = SCNNode()
+        for one in self.connections {
+            let split = one.toSingleSpaceLine().components(separatedBy: " ")
+           let conNbr = split.count - 1
+            
+            let currentElInd : Int = split[1].toInt()
+            
+            guard var index = atomsClass.firstIndex(where: { (item) -> Bool in
+               item.sequenceNbr == currentElInd
+            })
+                else {
+                    print("there is no suhc connection")
+                    continue
+            }
+            
+            
+            let firstAtom = atomsClass[index]
+            var i : Int = 2
+            
+            while (i < conNbr){
+                
+                guard let index = atomsClass.firstIndex(where: { (item) -> Bool in
+                    item.sequenceNbr == split[i].toInt()
+                }) else {
+                        print("there is no suhc connection 2")
+                        continue
+                }
+                
+                let atomToConnect = atomsClass[index]
+                let unit = connectionCylinderNode(startPoint : firstAtom.position(), endPoint: atomToConnect.position(), color: UIColor.green, radius : 0.15)
+                connectionsNode.addChildNode(unit)
+                i+=1
+            }
+        }
+        return connectionsNode
+    }
+    
+    
+    //https://stackoverflow.com/questions/35002232/draw-scenekit-object-between-two-points
+    func connectionCylinderNode(startPoint : SCNVector3, endPoint: SCNVector3, color : UIColor, radius : CGFloat) -> SCNNode {
+        let vector = SCNVector3Make(endPoint.x - startPoint.x, endPoint.y - startPoint.y, endPoint.z - startPoint.z)
+        let height = sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
+        let cylinder = SCNCylinder(radius: radius, height: CGFloat(height))
+        cylinder.radialSegmentCount = 4
+        cylinder.firstMaterial!.diffuse.contents = color
+        let node = SCNNode(geometry: cylinder)
+        node.position = SCNVector3Make((startPoint.x + endPoint.x) / 2, (startPoint.y + endPoint.y)/2, (startPoint.z + endPoint.z)/2)
+        node.eulerAngles = SCNVector3.lineEulerAngles(vector: vector)
+        return node
+    }
+
+
+    
+//    func line(startPoint: SCNVector3, endPoint: SCNVector3, color : UIColor) -> SCNNode
+//    {
+//        let vertices: [SCNVector3] = [startPoint, endPoint]
+//        let data = NSData(bytes: vertices, length: MemoryLayout<SCNVector3>.size * vertices.count) as Data
+//
+//        let vertexSource = SCNGeometrySource(data: data,
+//                                             semantic: .vertex,
+//                                             vectorCount: vertices.count,
+//                                             usesFloatComponents: true,
+//                                             componentsPerVector: 3,
+//                                             bytesPerComponent: MemoryLayout<Float>.size,
+//                                             dataOffset: 0,
+//                                             dataStride: MemoryLayout<SCNVector3>.stride)
+//
+//
+//        let indices: [Int32] = [ 0, 1]
+//
+//        let indexData = NSData(bytes: indices, length: MemoryLayout<Int32>.size * indices.count) as Data
+//
+//        let element = SCNGeometryElement(data: indexData,
+//                                         primitiveType: .line,
+//                                         primitiveCount: indices.count/2,
+//                                         bytesPerIndex: MemoryLayout<Int32>.size)
+//
+//        let line = SCNGeometry(sources: [vertexSource], elements: [element])
+//
+//        line.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+//        line.firstMaterial?.diffuse.contents = color
+//
+//       let lineNode = SCNNode(geometry: line)
+////        let line = SCNCylinder(
+//        return lineNode;
+//    }
 
 }
 
@@ -102,12 +202,12 @@ extension ProteinVisVC {
         self.present(alert, animated: true, completion: nil)
     }
     
-    // https://files.rcsb.org/ligands/view/HEM_ideal.pdb
-    // https://files.rcsb.org/ligands/view/HEM_model.pdb
-    // https://projects.intra.42.fr/projects/swifty-proteins/projects_users/1401144
+  
     
     func getProteinModel(){
         let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        
         guard let urlProtein = URL(string: str) else {
             print("Error in building URL")
             return
@@ -120,9 +220,9 @@ extension ProteinVisVC {
             if let err = error {
                 print("error occured \(err)")
                 return
-            } else if let r = response as? HTTPURLResponse, let d = data {
+            } else if let _ = response as? HTTPURLResponse, let d = data {
                 
-                //  print(" our response code is \(r.statusCode)")
+                //  print(" our response code is \(response.statusCode)")
                 
                 
                 guard let utf8Text = String(data: d, encoding: .utf8) else {
@@ -198,4 +298,6 @@ extension ProteinVisVC {
     }
     
 }
+
+
 
