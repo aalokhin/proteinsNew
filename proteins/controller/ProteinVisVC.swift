@@ -23,14 +23,12 @@ import SceneKit
 class ProteinVisVC : UIViewController{
     
     @IBOutlet weak var sceneView: SCNView!
-    
-    
-    
     var protein : String = ""
     var modelString : String = ""
     var modelStrings : [String] = []
     var atoms : [String] = []
     var connections : [String] = []
+    
     
     var geometryNode: SCNNode = SCNNode()
     
@@ -70,11 +68,19 @@ class ProteinVisVC : UIViewController{
         let atomsNode = SCNNode()
         for atom in self.atoms {
             let split = atom.toSingleSpaceLine().components(separatedBy: " ")
+            
             let x : Float = split[6].toFloat()
             let y : Float = split[7].toFloat()
             let z : Float = split[8].toFloat()
-            let unit = SCNNode(geometry: carbonAtom())
-            unit.position = SCNVector3Make(x, y, z)
+            
+            
+            let atom = Atom(x : x, y : y, z : z, element: split[11])
+            let unit = SCNNode(geometry: atom.atomGeometry())
+            unit.position = atom.position()
+            
+            
+//            unit.position = SCNVector3Make(x, y, z)
+        
             atomsNode.addChildNode(unit)
         }
         return atomsNode
