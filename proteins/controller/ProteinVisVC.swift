@@ -106,7 +106,7 @@ class ProteinVisVC : UIViewController{
             
             let currentElInd : Int = split[1].toInt()
             
-            guard var index = atomsClass.firstIndex(where: { (item) -> Bool in
+            guard let index = atomsClass.firstIndex(where: { (item) -> Bool in
                item.sequenceNbr == currentElInd
             })
                 else {
@@ -116,9 +116,10 @@ class ProteinVisVC : UIViewController{
             
             
             let firstAtom = atomsClass[index]
+        
             var i : Int = 2
             
-            while (i < conNbr){
+            while (i <= conNbr){
                 
                 guard let index = atomsClass.firstIndex(where: { (item) -> Bool in
                     item.sequenceNbr == split[i].toInt()
