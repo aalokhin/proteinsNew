@@ -11,6 +11,7 @@
 
 // https://files.rcsb.org/ligands/view/HEM_ideal.pdb
 // https://files.rcsb.org/ligands/view/HEM_model.pdb
+//https://files.rcsb.org/ligands/view/HEM_model.pdb
 // https://projects.intra.42.fr/projects/swifty-proteins/projects_users/1401144
 
 /*
@@ -169,7 +170,18 @@ extension ProteinVisVC {
   
     
     func getProteinModel(){
-        let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        /*
+            guard let firstLetter = protein.first else {
+                    print("No first letter in protein name")
+                    return
+            }
+            print("here we go ", firstLetter)
+            
+            let str : String = "https://files.rcsb.org/ligands/\(firstLetter)/\(protein)/\(protein)_ideal.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            
+        */
+        
+          let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         
         guard let urlProtein = URL(string: str) else {

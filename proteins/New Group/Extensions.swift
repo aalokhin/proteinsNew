@@ -26,6 +26,11 @@ extension String {
     func toDouble() -> Double {
         return (self as NSString).doubleValue
     }
+    
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+    
 }
 
 

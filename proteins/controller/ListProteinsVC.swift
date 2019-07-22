@@ -13,18 +13,24 @@ import UIKit
 class ListProteinsVC: UIViewController {
     
     var filteredProteins : [String] = []
-    var unFilteredProteins : [String] = ["001",
+    var unFilteredProteinsTest : [String] = ["001",
                                          "011",
     "031",
     "041",
     "04G"]
+     var unFilteredProteins : [String] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpSearchController()
+        readFromFile()
+        
+
+        
+        
+       
         print("hello from ListProteinsVC")
         // Do any additional setup after loading the view.
     }
@@ -34,6 +40,48 @@ class ListProteinsVC: UIViewController {
         
         return searchController.searchBar.text?.isEmpty ?? true
         
+    }
+    
+    func readFromFile(){
+        let path = URL(string: "https://projects.intra.42.fr/uploads/document/document/312/ligands.txt")
+        
+        do {
+            var request = URLRequest(url: path!)
+            request.httpMethod = "GET"
+            let task = URLSession.shared.dataTask(with: request) {data, response, error in
+                if let err = error {
+                    print("error occured \(err)")
+                    return
+                } else if let _ = response as? HTTPURLResponse, let d = data {
+
+                    guard let utf8Text = String(data: d, encoding: .utf8) else {
+                        print("no utf8 string")
+                        return
+                        
+                    }
+                    print(utf8Text)
+                    self.unFilteredProteins = utf8Text.components(separatedBy: .whitespacesAndNewlines)
+                    print(self.unFilteredProteins.count)
+                    DispatchQueue.main.async {
+                        
+                         self.setUpSearchController()
+                        self.tableView.reloadData()
+                    }
+                    
+                    // print(self.modelString)
+                    
+                }
+            }
+            task.resume()
+            
+            
+            // Get the contents
+           // let contents = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
+            //print(contents)
+        }
+        catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
