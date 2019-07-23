@@ -51,10 +51,10 @@ extension ProteinVisVC {
         print("here we go these are number of bonds=> \(bondsNbr)")
         return connectionsNode
     }
-    
+    //this seems to be no good
     func checkIfNodeEsists(parent : SCNNode, unit : SCNNode) -> Bool{
         for child in parent.childNodes as [SCNNode] {
-            if (child.position.x == unit.position.x && child.position.y == unit.position.y && child.position.z == unit.position.z) {
+            if (child.position.x == unit.position.x && child.position.y == unit.position.y && child.position.z == unit.position.z && child.position.length == unit.position.length) {
                 //print("Node already exists")
                 return true
             }

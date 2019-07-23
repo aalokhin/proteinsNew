@@ -36,6 +36,9 @@ extension String {
 // StackOverFlow needs refactoring
 
 extension SCNVector3 {
+    var length : Float {
+        return sqrtf(x*x + y*y + z*z)
+    }
     
     static func lineEulerAngles(vector: SCNVector3) -> SCNVector3 {
         // let height = sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
