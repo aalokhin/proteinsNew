@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func fingerPrintAuthenticationTapped(_ sender: UIButton) {
         self.evokeVC()
+
+       //authenticateUser()
     }
     
     func authenticateUser() {
