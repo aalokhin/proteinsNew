@@ -33,18 +33,15 @@ class ListProteinsVC: UIViewController {
         super.viewDidLoad()
         readFromFile()       
         print("hello from ListProteinsVC")
-        // Do any additional setup after loading the view.
     }
     
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
-        
         return searchController.searchBar.text?.isEmpty ?? true
         
     }
     
     func readFromFile(){
-        
         /* File is being uploaded from Intra now which actually sucks */
         let path = URL(string: "https://projects.intra.42.fr/uploads/document/document/312/ligands.txt")
         do {
@@ -103,9 +100,7 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         if isFiltering() {
             return filteredProteins.count
         }
-        
         return unFilteredProteins.count
-       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,9 +136,6 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
             print("unexpected segue identifier")
         }
     }
-
-    
-    
 }
 //tutorial from here! https://www.raywenderlich.com/472-uisearchcontroller-tutorial-getting-started still more functionality can be implemented so please //TODO check it out again
 

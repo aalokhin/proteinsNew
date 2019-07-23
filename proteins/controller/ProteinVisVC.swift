@@ -77,19 +77,7 @@ class ProteinVisVC : UIViewController{
         sceneView.scene!.rootNode.addChildNode(geometryNode)
     }
     
-    //https://stackoverflow.com/questions/35002232/draw-scenekit-object-between-two-points
-    
-    func connectionCylinderNode(startPoint : SCNVector3, endPoint: SCNVector3, color : UIColor, radius : CGFloat) -> SCNNode {
-        let vector = SCNVector3Make(endPoint.x - startPoint.x, endPoint.y - startPoint.y, endPoint.z - startPoint.z)
-        let height = sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
-        let cylinder = SCNCylinder(radius: radius, height: CGFloat(height))
-        cylinder.radialSegmentCount = 4
-        cylinder.firstMaterial!.diffuse.contents = color
-        let node = SCNNode(geometry: cylinder)
-        node.position = SCNVector3Make((startPoint.x + endPoint.x) / 2, (startPoint.y + endPoint.y)/2, (startPoint.z + endPoint.z)/2)
-        node.eulerAngles = SCNVector3.lineEulerAngles(vector: vector)
-        return node
-    }
+   
 }
 
 

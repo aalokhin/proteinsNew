@@ -28,7 +28,6 @@ extension ProteinVisVC {
             }
             let firstAtom = atoms[index]
             var i : Int = 2
-
             while (i <= conNbr){
                 guard let index = atoms.firstIndex(where: { (item) -> Bool in
                     item.sequenceNbr == split[i].toInt()
@@ -39,9 +38,13 @@ extension ProteinVisVC {
                 }
                 
                 let atomToConnect = atoms[index]
-                bondsNbr+=1
+                
                 let unit = connectionCylinderNode(startPoint : firstAtom.position(), endPoint: atomToConnect.position(), color: UIColor.green, radius : 0.08)
-                connectionsNode.addChildNode(unit)
+                if (checkIfNodeEsists(parent : connectionsNode, unit : unit) == false){
+                    /*we need to add something here*/
+                    bondsNbr+=1
+                    connectionsNode.addChildNode(unit)
+                }
                 i+=1
             }
         }
@@ -49,6 +52,30 @@ extension ProteinVisVC {
         return connectionsNode
     }
     
+    func checkIfNodeEsists(parent : SCNNode, unit : SCNNode) -> Bool{
+        for child in parent.childNodes as [SCNNode] {
+            if (child.position.x == unit.position.x && child.position.y == unit.position.y && child.position.z == unit.position.z) {
+                //print("Node already exists")
+                return true
+            }
+        }
+        return false
+    
+    }
+    
+    //https://stackoverflow.com/questions/35002232/draw-scenekit-object-between-two-points
+    
+    func connectionCylinderNode(startPoint : SCNVector3, endPoint: SCNVector3, color : UIColor, radius : CGFloat) -> SCNNode {
+        let vector = SCNVector3Make(endPoint.x - startPoint.x, endPoint.y - startPoint.y, endPoint.z - startPoint.z)
+        let height = sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
+        let cylinder = SCNCylinder(radius: radius, height: CGFloat(height))
+        cylinder.radialSegmentCount = 4
+        cylinder.firstMaterial!.diffuse.contents = color
+        let node = SCNNode(geometry: cylinder)
+        node.position = SCNVector3Make((startPoint.x + endPoint.x) / 2, (startPoint.y + endPoint.y)/2, (startPoint.z + endPoint.z)/2)
+        node.eulerAngles = SCNVector3.lineEulerAngles(vector: vector)
+        return node
+    }
 
     func allAtoms() -> SCNNode {
         let atomsNode = SCNNode()
