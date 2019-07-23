@@ -18,6 +18,7 @@ class Atom {
     let sequenceNbr : Int
     
     init(x : Float, y : Float, z : Float, el : String, seqNr : Int){
+        print(seqNr)
         self.x = x
         self.y = y
         self.z = z
@@ -26,7 +27,7 @@ class Atom {
     }
     
     func atomGeometry() -> SCNGeometry {
-        let atom = SCNSphere(radius: 0.50)
+        let atom = SCNSphere(radius: 0.3)
         switch element {
         case  "C":
             atom.firstMaterial!.diffuse.contents = UIColor.darkGray

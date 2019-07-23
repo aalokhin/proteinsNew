@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 //https://www.raywenderlich.com/472-uisearchcontroller-tutorial-getting-started
+//
+
+/* Reading from file localpath */
+/* let contents = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
+ print(contents) */
 
 class ListProteinsVC: UIViewController {
     
@@ -18,19 +23,15 @@ class ListProteinsVC: UIViewController {
     "031",
     "041",
     "04G"]
+    
+    
      var unFilteredProteins : [String] = []
-    
     let searchController = UISearchController(searchResultsController: nil)
-    
+
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        readFromFile()
-        
-
-        
-        
-       
+        readFromFile()       
         print("hello from ListProteinsVC")
         // Do any additional setup after loading the view.
     }
@@ -46,7 +47,6 @@ class ListProteinsVC: UIViewController {
         
         /* File is being uploaded from Intra now which actually sucks */
         let path = URL(string: "https://projects.intra.42.fr/uploads/document/document/312/ligands.txt")
-        
         do {
             var request = URLRequest(url: path!)
             request.httpMethod = "GET"
@@ -61,25 +61,16 @@ class ListProteinsVC: UIViewController {
                         return
                         
                     }
-                    print(utf8Text)
+                   // print(utf8Text)
                     self.unFilteredProteins = utf8Text.components(separatedBy: .whitespacesAndNewlines)
-                    print(self.unFilteredProteins.count)
+                    print("We have this many proteins => ", self.unFilteredProteins.count)
                     DispatchQueue.main.async {
-                        
-                         self.setUpSearchController()
+                        self.setUpSearchController()
                         self.tableView.reloadData()
                     }
-                    
-                    // print(self.modelString)
-                    
                 }
             }
             task.resume()
-            
-            
-            // Get the contents
-           // let contents = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
-            //print(contents)
         }
     }
     
@@ -135,24 +126,18 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         
         switch identifier {
         case "ShowProtein":
-            // 1
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
             let protein : String
             if isFiltering() {
                 protein = filteredProteins[indexPath.row]
             } else {
                 protein = unFilteredProteins[indexPath.row]
             }
-            // 2
-            // 3
             let destination = segue.destination as! ProteinVisVC
-            // 4
             destination.protein = protein
-            
-        case "addNote":
+
+        case "addProtein": //TODO
             print("create note bar button item tapped")
-            
         default:
             print("unexpected segue identifier")
         }
