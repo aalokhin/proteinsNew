@@ -23,7 +23,6 @@ class Atom {
         self.y = y
         self.z = z
         self.element = el
-        print(element)
         self.sequenceNbr = seqNr
     }
     
@@ -34,9 +33,9 @@ class Atom {
         return atom
     }
         
-        func position() -> SCNVector3 {
-            return SCNVector3Make(self.x, self.y, self.z)
-        }
+    func position() -> SCNVector3 {
+        return SCNVector3Make(self.x, self.y, self.z)
+    }
     
     func getCPKColor(el : String) -> UIColor {
         switch el {

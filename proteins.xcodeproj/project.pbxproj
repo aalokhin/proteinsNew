@@ -19,7 +19,6 @@
 		5D2E942222E1D79C00477FF6 /* proteinsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E942122E1D79C00477FF6 /* proteinsUITests.swift */; };
 		5DF1565822E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */; };
 		5DF1565A22E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */; };
-		5DF1565C22E711D500759DB4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565B22E711D500759DB4 /* Color.swift */; };
 		EF03A89722E328F1006DB8BD /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF03A89622E328F1006DB8BD /* LocalAuthentication.framework */; };
 		EF06EC4222E46115008A2FE5 /* ResponseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF06EC4122E46115008A2FE5 /* ResponseJSON.swift */; };
 		EF06EC4622E4877F008A2FE5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF06EC4522E4877F008A2FE5 /* Extensions.swift */; };
@@ -63,7 +62,6 @@
 		5D2E942322E1D79C00477FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForProteinVisVC.swift; sourceTree = "<group>"; };
 		5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseFileExtensionForVisProteinVC.swift; sourceTree = "<group>"; };
-		5DF1565B22E711D500759DB4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = "proteins/New Group/Color.swift"; sourceTree = SOURCE_ROOT; };
 		EF03A89622E328F1006DB8BD /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		EF06EC4122E46115008A2FE5 /* ResponseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseJSON.swift; path = proteins/controller/ResponseJSON.swift; sourceTree = SOURCE_ROOT; };
 		EF06EC4522E4877F008A2FE5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 			children = (
 				EF06EC4122E46115008A2FE5 /* ResponseJSON.swift */,
 				5D16CAB422E5B5FD00FDB8FA /* Atom.swift */,
-				5DF1565B22E711D500759DB4 /* Color.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -335,7 +332,6 @@
 				5D2E940422E1D79B00477FF6 /* LoginViewController.swift in Sources */,
 				EF06EC4622E4877F008A2FE5 /* Extensions.swift in Sources */,
 				5D1358DF22E374DC003BE1ED /* ProteinVisVC.swift in Sources */,
-				5DF1565C22E711D500759DB4 /* Color.swift in Sources */,
 				EF06EC4222E46115008A2FE5 /* ResponseJSON.swift in Sources */,
 				EFCC562E22E344EC00C36535 /* ListProteinsVC.swift in Sources */,
 				5DF1565822E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift in Sources */,
