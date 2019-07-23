@@ -20,7 +20,6 @@
 		5DF1565822E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */; };
 		5DF1565A22E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */; };
 		EF03A89722E328F1006DB8BD /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF03A89622E328F1006DB8BD /* LocalAuthentication.framework */; };
-		EF06EC4222E46115008A2FE5 /* ResponseJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF06EC4122E46115008A2FE5 /* ResponseJSON.swift */; };
 		EF06EC4622E4877F008A2FE5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF06EC4522E4877F008A2FE5 /* Extensions.swift */; };
 		EFCC562C22E344D200C36535 /* ListProteins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFCC562B22E344D200C36535 /* ListProteins.storyboard */; };
 		EFCC562E22E344EC00C36535 /* ListProteinsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCC562D22E344EC00C36535 /* ListProteinsVC.swift */; };
@@ -63,7 +62,6 @@
 		5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForProteinVisVC.swift; sourceTree = "<group>"; };
 		5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseFileExtensionForVisProteinVC.swift; sourceTree = "<group>"; };
 		EF03A89622E328F1006DB8BD /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		EF06EC4122E46115008A2FE5 /* ResponseJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResponseJSON.swift; path = proteins/controller/ResponseJSON.swift; sourceTree = SOURCE_ROOT; };
 		EF06EC4522E4877F008A2FE5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EFCC562B22E344D200C36535 /* ListProteins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListProteins.storyboard; sourceTree = "<group>"; };
 		EFCC562D22E344EC00C36535 /* ListProteinsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProteinsVC.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		EFCC562A22E344A500C36535 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				EF06EC4122E46115008A2FE5 /* ResponseJSON.swift */,
 				5D16CAB422E5B5FD00FDB8FA /* Atom.swift */,
 			);
 			path = model;
@@ -332,7 +329,6 @@
 				5D2E940422E1D79B00477FF6 /* LoginViewController.swift in Sources */,
 				EF06EC4622E4877F008A2FE5 /* Extensions.swift in Sources */,
 				5D1358DF22E374DC003BE1ED /* ProteinVisVC.swift in Sources */,
-				EF06EC4222E46115008A2FE5 /* ResponseJSON.swift in Sources */,
 				EFCC562E22E344EC00C36535 /* ListProteinsVC.swift in Sources */,
 				5DF1565822E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift in Sources */,
 				5D16CAB522E5B5FD00FDB8FA /* Atom.swift in Sources */,

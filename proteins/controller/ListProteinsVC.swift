@@ -116,7 +116,6 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         } else {
             protein = unFilteredProteins[indexPath.row]
         }
-        
         cell.textLabel?.text = protein
         return cell
     }
