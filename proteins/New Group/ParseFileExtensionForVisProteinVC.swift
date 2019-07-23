@@ -19,6 +19,7 @@ extension ProteinVisVC {
             let split = one.toSingleSpaceLine().components(separatedBy: " ")
             let conNbr = split.count - 1
             let currentElInd : Int = split[1].toInt()
+            
             guard let index = atoms.firstIndex(where: { (item) -> Bool in
                 item.sequenceNbr == currentElInd
             }) else {
@@ -38,12 +39,13 @@ extension ProteinVisVC {
                 }
                 
                 let atomToConnect = atoms[index]
+                bondsNbr+=1
                 let unit = connectionCylinderNode(startPoint : firstAtom.position(), endPoint: atomToConnect.position(), color: UIColor.green, radius : 0.08)
                 connectionsNode.addChildNode(unit)
                 i+=1
             }
         }
-        print()
+        print("here we go these are number of bonds=> \(bondsNbr)")
         return connectionsNode
     }
     

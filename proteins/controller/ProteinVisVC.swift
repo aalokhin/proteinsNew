@@ -41,6 +41,8 @@ class ProteinVisVC : UIViewController{
     @IBOutlet weak var sceneView: SCNView!
     var protein : String = ""
     
+    var bondsNbr : Int = 0
+    
     var modelString : String = ""
     var modelStrings : [String] = []
     
