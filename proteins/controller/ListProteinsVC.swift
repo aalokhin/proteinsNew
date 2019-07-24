@@ -31,6 +31,10 @@ class ListProteinsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib.init(nibName: "LigandCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "LigandCell")
+        
         readFromFile()       
         print("hello from ListProteinsVC")
     }
@@ -73,10 +77,8 @@ class ListProteinsVC: UIViewController {
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredProteins = unFilteredProteins.filter({( protein : String) -> Bool in
-            //print(protein.lowercased().contains(searchText.lowercased()))
             return protein.lowercased().contains(searchText.lowercased())
         })
-        
         tableView.reloadData()
     }
     
@@ -84,7 +86,7 @@ class ListProteinsVC: UIViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Candies"
+        searchController.searchBar.placeholder = "Search Ligands"
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }

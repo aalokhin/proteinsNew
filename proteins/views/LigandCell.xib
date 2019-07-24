@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LigandCell" rowHeight="71" id="WrS-zk-laJ" customClass="LigandCell" customModule="proteins" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WrS-zk-laJ" id="XGY-6p-HVe">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="70.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlW-Wh-sii">
+                        <rect key="frame" x="5" y="0.0" width="45" height="70.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wlW-Wh-sii" firstAttribute="leading" secondItem="XGY-6p-HVe" secondAttribute="leading" constant="5" id="Mt9-6C-8ko"/>
+                    <constraint firstAttribute="bottom" secondItem="wlW-Wh-sii" secondAttribute="bottom" id="TOe-qL-xwO"/>
+                    <constraint firstItem="wlW-Wh-sii" firstAttribute="top" secondItem="XGY-6p-HVe" secondAttribute="top" id="UK0-vI-enT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.69329312890000006" green="0.9710667046" blue="1" alpha="0.53708186619999998" colorSpace="custom" customColorSpace="displayP3"/>
+            <connections>
+                <outlet property="nameLbl" destination="wlW-Wh-sii" id="5oN-lx-TAS"/>
+            </connections>
+            <point key="canvasLocation" x="-288.40579710144931" y="50.558035714285715"/>
+        </tableViewCell>
+    </objects>
+</document>

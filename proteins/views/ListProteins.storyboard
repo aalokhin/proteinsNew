@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="rpp-jM-B3D">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LigandCell" id="rpp-jM-B3D" customClass="LigandCell" customModule="proteins" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rpp-jM-B3D" id="j7U-g9-nEn">
@@ -51,6 +51,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="nmf-g5-mcn" id="7Ze-ei-iVG"/>
+                        <segue destination="HhK-6P-DuF" kind="show" identifier="FromTableView" id="4bG-le-4LC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xxl-EJ-YPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,4 +67,7 @@
             <point key="canvasLocation" x="631" y="-305"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4bG-le-4LC"/>
+    </inferredMetricsTieBreakers>
 </document>
