@@ -12,7 +12,7 @@ import UIKit
 extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering() {
+        if shouldShowSearchResults == true  {
             return filteredProteins.count
         }
         return unFilteredProteins.count
@@ -25,7 +25,7 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LigandCell", for: indexPath) as! LigandCell
         let protein : String
-        if isFiltering() {
+        if shouldShowSearchResults == true {
             protein = filteredProteins[indexPath.row]
         } else {
             protein = unFilteredProteins[indexPath.row]
@@ -34,39 +34,4 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else { return }
-        
-        switch identifier {
-            /*not using right now but lets leave it for now*/
-        case "ShowProtein":
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let protein : String
-            if isFiltering() {
-                protein = filteredProteins[indexPath.row]
-            } else {
-                protein = unFilteredProteins[indexPath.row]
-            }
-            let destination = segue.destination as! ProteinVisVC
-            destination.protein = protein
-            /*not using right now but lets leave it for now*/
-        case "FromTableView":
-            print("FromTableView")
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let protein : String
-            if isFiltering() {
-                protein = filteredProteins[indexPath.row]
-            } else {
-                protein = unFilteredProteins[indexPath.row]
-            }
-            let destination = segue.destination as! ProteinVisVC
-            destination.protein = protein
-            
-            
-        case "addProtein": //TODO
-            print("create note bar button item tapped")
-        default:
-            print("unexpected segue identifier")
-        }
-    }
 }

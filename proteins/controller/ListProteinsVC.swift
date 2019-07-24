@@ -24,10 +24,13 @@ class ListProteinsVC: UIViewController {
     "041",
     "04G"]
     
+    var shouldShowSearchResults = false
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var unFilteredProteins : [String] = []
     
-    let searchController = UISearchController(searchResultsController: nil)
+//    let searchController = UISearchController(searchResultsController: nil)
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,34 +45,7 @@ class ListProteinsVC: UIViewController {
         print("hello from ListProteinsVC")
     }
     
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return searchController.searchBar.text?.isEmpty ?? true
-        
-    }
-
-    
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredProteins = unFilteredProteins.filter({( protein : String) -> Bool in
-            return protein.lowercased().contains(searchText.lowercased())
-        })
-        tableView.reloadData()
-    }
-    
-    func setUpSearchController(){
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Ligands"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
-    
-    func isFiltering() -> Bool {
-        //print("is filtering......")
-        return searchController.isActive && !searchBarIsEmpty()
-    }
-    
+   
     
     
     func readFromFile(){
@@ -93,12 +69,48 @@ class ListProteinsVC: UIViewController {
                     self.unFilteredProteins = utf8Text.components(separatedBy: .whitespacesAndNewlines)
                     print("We have this many proteins => ", self.unFilteredProteins.count)
                     DispatchQueue.main.async {
-                        self.setUpSearchController()
+                        self.setUpSearchBar()
                         self.tableView.reloadData()
                     }
                 }
             }
             task.resume()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else { return }
+        
+        switch identifier {
+            /*not using right now but lets leave it for now*/
+        case "ShowProtein":
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let protein : String
+            if shouldShowSearchResults == true {
+                protein = filteredProteins[indexPath.row]
+            } else {
+                protein = unFilteredProteins[indexPath.row]
+            }
+            let destination = segue.destination as! ProteinVisVC
+            destination.protein = protein
+            /*not using right now but lets leave it for now*/
+        case "FromTableView":
+            print("FromTableView")
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let protein : String
+            if shouldShowSearchResults == true{
+                protein = filteredProteins[indexPath.row]
+            } else {
+                protein = unFilteredProteins[indexPath.row]
+            }
+            let destination = segue.destination as! ProteinVisVC
+            destination.protein = protein
+            
+            
+        case "addProtein": //TODO
+            print("create note bar button item tapped")
+        default:
+            print("unexpected segue identifier")
         }
     }
 }

@@ -9,10 +9,25 @@ import UIKit
 import Foundation
 
 
-extension ListProteinsVC: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+//from here : https://www.youtube.com/watch?v=8xf-NztULEY
+
+extension ListProteinsVC: UISearchBarDelegate {
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        print("here")
+        return searchBar.text?.isEmpty ?? true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredProteins = unFilteredProteins.filter({( protein : String) -> Bool in
+            return protein.lowercased().contains(searchText.lowercased())
+        })
+        shouldShowSearchResults = searchText != "" ? true : false
+        tableView.reloadData()
+    }
+    
+    func setUpSearchBar(){
+        searchBar.delegate = self
     }
 }
 
