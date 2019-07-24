@@ -11,6 +11,7 @@
 		5D1358DF22E374DC003BE1ED /* ProteinVisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1358DE22E374DC003BE1ED /* ProteinVisVC.swift */; };
 		5D16CAB522E5B5FD00FDB8FA /* Atom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D16CAB422E5B5FD00FDB8FA /* Atom.swift */; };
 		5D1F587F22E84FA3009E7FB7 /* addingConnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F587E22E84FA3009E7FB7 /* addingConnections.swift */; };
+		5D1F588922E8660C009E7FB7 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1F588822E8660C009E7FB7 /* TableViewExtension.swift */; };
 		5D2E940222E1D79B00477FF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E940122E1D79B00477FF6 /* AppDelegate.swift */; };
 		5D2E940422E1D79B00477FF6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E940322E1D79B00477FF6 /* LoginViewController.swift */; };
 		5D2E940722E1D79B00477FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E940522E1D79B00477FF6 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		5D1358DE22E374DC003BE1ED /* ProteinVisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinVisVC.swift; sourceTree = "<group>"; };
 		5D16CAB422E5B5FD00FDB8FA /* Atom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Atom.swift; path = proteins/controller/Atom.swift; sourceTree = SOURCE_ROOT; };
 		5D1F587E22E84FA3009E7FB7 /* addingConnections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addingConnections.swift; sourceTree = "<group>"; };
+		5D1F588822E8660C009E7FB7 /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		5D2E93FE22E1D79B00477FF6 /* proteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = proteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2E940122E1D79B00477FF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D2E940322E1D79B00477FF6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */,
 				5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */,
 				5D1F587E22E84FA3009E7FB7 /* addingConnections.swift */,
+				5D1F588822E8660C009E7FB7 /* TableViewExtension.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				5D16CAB522E5B5FD00FDB8FA /* Atom.swift in Sources */,
 				5D2E940222E1D79B00477FF6 /* AppDelegate.swift in Sources */,
 				5DF1565A22E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift in Sources */,
+				5D1F588922E8660C009E7FB7 /* TableViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
