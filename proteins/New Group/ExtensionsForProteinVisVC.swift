@@ -11,7 +11,7 @@ import SceneKit
 import UIKit
 
 /*
- NOYT SURE WHICH REQUEST TO USE HERE
+ NOT SURE WHICH REQUEST TO USE HERE
  guard let firstLetter = protein.first else {
  print("No first letter in protein name")
  return

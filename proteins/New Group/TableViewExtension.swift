@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
+extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             return filteredProteins.count
@@ -29,7 +30,6 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         } else {
             protein = unFilteredProteins[indexPath.row]
         }
-        //cell.textLabel?.text = protein
         cell.nameLbl.text = protein
         return cell
     }
