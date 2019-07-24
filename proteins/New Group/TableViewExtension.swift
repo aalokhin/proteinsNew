@@ -17,23 +17,9 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         return unFilteredProteins.count
     }
     
-//    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//       print("xs")
-//        self.performSegue(withIdentifier: "FromTableView", sender: self)
-//
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.performSegue(withIdentifier: "FromTableView", sender: self)
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let indexPath = tableView.indexPathForSelectedRow;
-//        let cellname = tableView.cellForRowAtIndexPath(indexPath!) as! CardTableViewCell;
-//        let DetailViewController = segue.destinationViewController
-//        DetailViewController.title = cellname.textLabel?.text
-//    }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LigandCell", for: indexPath) as! LigandCell
