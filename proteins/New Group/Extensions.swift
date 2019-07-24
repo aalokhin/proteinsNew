@@ -40,24 +40,6 @@ extension SCNVector3 {
         return sqrtf(x*x + y*y + z*z)
     }
     
-    static func lineEulerAngles(vector: SCNVector3) -> SCNVector3 {
-        // let height = sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
-        //let lxz = sqrtf(vector.x * vector.x + vector.z * vector.z)
-        
-        let pitchB = vector.y < 0 ? Float.pi - asinf(sqrtf(vector.x * vector.x + vector.z * vector.z)/sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)) : asinf(sqrtf(vector.x * vector.x + vector.z * vector.z)/sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z))
-        let pitch = vector.z == 0 ? pitchB : sign(vector.z) * pitchB
-        
-        var yaw: Float = 0
-        if vector.x != 0 || vector.z != 0 {
-            let inner = vector.x / (sqrtf(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z) * sinf(pitch))
-            if inner > 1 || inner < -1 {
-                yaw = Float.pi / 2
-            } else {
-                yaw = asinf(inner)
-            }
-        }
-        return SCNVector3(CGFloat(pitch), CGFloat(yaw), 0)
-    }
     
     /*
     static func lineEulerAngles(vector: SCNVector3) -> SCNVector3 {
