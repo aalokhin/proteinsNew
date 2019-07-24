@@ -25,6 +25,7 @@ extension ProteinVisVC {
                 print("there is no atom with sequence number \(currentElInd)")
                 continue
             }
+            
             let firstAtom = atoms[index]
             var i : Int = 2
             while (i <= conNbr){

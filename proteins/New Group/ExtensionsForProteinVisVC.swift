@@ -38,9 +38,7 @@ extension ProteinVisVC {
     }
     
     func getProteinModel(){
-       // let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        
-        
+       // let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)! //doesn't work for some reason screw this link
         let str : String = "https://files.rcsb.org/ligands/\(protein[0])/\(protein)/\(protein)_ideal.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         guard let urlProtein = URL(string: str) else {
             print("Error in building URL")
