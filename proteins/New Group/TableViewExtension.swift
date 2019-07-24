@@ -52,6 +52,7 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
         guard let identifier = segue.identifier else { return }
         
         switch identifier {
+            /*not using right now but lets leave it for now*/
         case "ShowProtein":
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let protein : String
@@ -62,6 +63,7 @@ extension ListProteinsVC : UITableViewDelegate, UITableViewDataSource{
             }
             let destination = segue.destination as! ProteinVisVC
             destination.protein = protein
+            /*not using right now but lets leave it for now*/
         case "FromTableView":
             print("FromTableView")
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
