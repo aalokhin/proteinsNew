@@ -51,7 +51,7 @@ class ProteinVisVC : UIViewController{
     
     var atoms : [Atom] = []
     
-    
+    let scene = SCNScene()
     var geometryNodeAtom : SCNNode = SCNNode()
     var geometryNodeCon : SCNNode = SCNNode()
     
@@ -64,11 +64,9 @@ class ProteinVisVC : UIViewController{
     }
     
     func sceneSetup() {
-        let scene = SCNScene()
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
-        
         geometryNodeAtom = allAtoms()
         geometryNodeCon = allConnections()
         let geometryNode = SCNNode()
