@@ -77,9 +77,3 @@ class ProteinVisVC : UIViewController{
     
    
 }
-
-
-
-
-
-
