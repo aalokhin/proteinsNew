@@ -70,7 +70,7 @@ class ProteinVisVC : UIViewController{
     
     @objc func appMovedToBackground() {
         print("App moved to background! from  protein visualization VC")
-        self.navigationController?.popToRootViewController(animated: true)
+        //self.navigationController?.popToRootViewController(animated: true)
     }
     
     func sceneSetup() {

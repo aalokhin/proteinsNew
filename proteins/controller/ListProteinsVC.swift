@@ -51,7 +51,7 @@ class ListProteinsVC: UIViewController {
     
     @objc func appMovedToBackground() {
         print("App moved to background! from List proteins VC")
-        self.navigationController?.popToRootViewController(animated: true)
+       // self.navigationController?.popToRootViewController(animated: true)
     }
     
    
