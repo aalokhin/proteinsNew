@@ -38,11 +38,20 @@ class ListProteinsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        
         let nib = UINib.init(nibName: "LigandCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "LigandCell")
         
         readFromFile()       
         print("hello from ListProteinsVC")
+    }
+    
+    @objc func appMovedToBackground() {
+        print("App moved to background! from List proteins VC")
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
    
