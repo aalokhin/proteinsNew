@@ -16,11 +16,11 @@
  Before begining the core of the projet add an icon to your application AND a Launchscreen
  and make sure the launchscreen stays some time so we can appreciate it !
  Login View Controller:
- • A user must be able to login with Touch ID using a button
+ • A user must be able to login with Touch ID using a button ☑️
  
  • If login fails you must display a popup warning authentication failed ✅
  
- • If the iPhone is not compatible the Touch ID login button should be hidden
+ • If the iPhone is not compatible the Touch ID login button should be hidden ✅
  
  • The LoginViewController should ALWAYS be displayed when launching the app meaning
  if you press the Home button and relaunch the app whitout quitting it, it should show
@@ -36,7 +36,7 @@
  • Display the ligand model in 3D ✅
  • You must use CPK coloring ✅
  • You should at least represent the ligand using Balls and Sticks model ✅
- • When clicking on an atom display the atom type (C, H, O, etc.)
+ • When clicking on an atom display the atom type (C, H, O, etc.)  // almost --- > ☑️
  • Share your modelisation through a ‘Share‘ button ✅
  • You should be able to ‘play‘ (zoom, rotate...) with the ligand in Scene Kit ✅
  */
@@ -60,30 +60,22 @@ class LoginViewController: UIViewController {
         
     }
     
-    
-    
-    
     @IBAction func fingerPrintAuthenticationTapped(_ sender: UIButton) {
             self.evokeVC()
 
-       //authenticateUser()
+       //authenticateUser() // this thing is supposed to allow authentication
     }
     
     func authenticateUser() {
-        let context = LAContext()
-       
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+        if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Identify yourself!"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+            authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                 [unowned self] success, authenticationError in
-                
                 DispatchQueue.main.async {
                     if success {
                         print("success")
                         self.evokeVC()
-                    //self.runSecretCode()
+                        //self.runSecretCode()
                     } else {
                         let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -92,9 +84,7 @@ class LoginViewController: UIViewController {
                 }
             }
         } else {
-            let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
+            print("we'll get back some day")
         }
     }
     
