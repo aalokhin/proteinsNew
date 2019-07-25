@@ -25,6 +25,7 @@ extension ProteinVisVC {
             
             let unit = SCNNode(geometry: atom.atomGeometry())
             unit.position = atom.position()
+            unit.name = atom.element // adds name to an element
             atomsNode.addChildNode(unit)
         }
         print("here we go these are number of atoms=> \(atoms.count)")

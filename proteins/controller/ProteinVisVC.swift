@@ -55,17 +55,43 @@ class ProteinVisVC : UIViewController{
     var geometryNodeAtom : SCNNode = SCNNode()
     var geometryNodeCon : SCNNode = SCNNode()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //to be able to notify us if the app was moved to background
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        //tapping gesture for a thing
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProteinVisVC.sceneTapped(recognizer:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
         topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
 
     }
     
+    
+    @objc func sceneTapped(recognizer: UITapGestureRecognizer) {
+        let location = recognizer.location(in: self.sceneView)
+        
+        let hit = self.sceneView!.hitTest(location, options: nil)
+        if let tappedNode = hit.first?.node {
+            if let name = tappedNode.name {
+                print("node with a name has been tapped ")
+                topLabel.text = name
+            }
+            else {
+                 topLabel.text = "no name node"
+                print("tapped on a node with no name")
+            }
+        } else {
+             topLabel.text = "no node tapped "
+            print("apped elswhere but node")
+        }
+    }
 
     @objc func appMovedToBackground() {
         print("App moved to background! from  protein visualization VC")
