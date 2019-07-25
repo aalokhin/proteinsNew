@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+// https://medium.com/@stasost/ios-root-controller-navigation-3625eedbbff useful resource
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -34,15 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-       /* This might be totally wrong to be honest*/
+/* This might be totally wrong to be honest*/
        // seems like there are leaks / need to figure this out https://guides.codepath.com/ios/View-Controller-Lifecycle
         
     
         let topController = UIApplication.topViewController()
         print("moving to background from ", topController!)
         topController?.navigationController?.popToRootViewController(animated: false)
-
-        
         
 /* This might be totally wrong to be honest*/
         
@@ -70,17 +68,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //not sure if this works
 extension UIApplication
 {
-    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
-    {
-        if let nav = base as? UINavigationController
+    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = base as? UINavigationController
         {
-            let top = topViewController(nav.visibleViewController)
+            let top = topViewController(navigationController.visibleViewController)
             return top
         }
         
-        if let tab = base as? UITabBarController
+        if let tabController = base as? UITabBarController
         {
-            if let selected = tab.selectedViewController
+            if let selected = tabController.selectedViewController
             {
                 let top = topViewController(selected)
                 return top

@@ -45,7 +45,7 @@ class ListProteinsVC: UIViewController {
         let nib = UINib.init(nibName: "LigandCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "LigandCell")
         
-        readFromFile()       
+        readFromFile()
         print("hello from ListProteinsVC")
     }
     
@@ -78,6 +78,8 @@ class ListProteinsVC: UIViewController {
                     }
                     // print(utf8Text)
                     self.unFilteredProteins = utf8Text.components(separatedBy: .whitespacesAndNewlines)
+                    self.unFilteredProteins.append("masha")
+
                     print("We have this many proteins => ", self.unFilteredProteins.count)
                     DispatchQueue.main.async {
                         self.setUpSearchBar()

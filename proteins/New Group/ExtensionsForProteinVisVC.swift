@@ -33,7 +33,22 @@ extension ProteinVisVC {
             message : message,
             preferredStyle : UIAlertController.Style.alert
         );
-        alert.addAction(UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default, handler: nil))
+        /*
+        let alert = UIAlertController(title: "New Exercise Added", message: "\(name)", preferredStyle: UIAlertControllerStyle.Alert)
+       
+         alert.addAction(UIAlertAction(title: "Ok!!", style: UIAlertActionStyle.Default, handler: {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            // You only need the pop
+            //self.dismissViewControllerAnimated(true, completion: {})
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        */
+        
+        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
     
