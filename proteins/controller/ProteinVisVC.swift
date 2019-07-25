@@ -68,6 +68,11 @@ class ProteinVisVC : UIViewController{
 
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.popViewController(animated: true)
+//
+//    }
+    
     @objc func appMovedToBackground() {
         print("App moved to background! from  protein visualization VC")
         //self.navigationController?.popToRootViewController(animated: true)

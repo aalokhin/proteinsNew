@@ -54,6 +54,8 @@ class ListProteinsVC: UIViewController {
        // self.navigationController?.popToRootViewController(animated: true)
     }
     
+
+    
    
     
     

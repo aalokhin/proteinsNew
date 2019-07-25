@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         
        /* This might be totally wrong to be honest*/
-       
+       // seems like there are leaks / need to figure this out https://guides.codepath.com/ios/View-Controller-Lifecycle
+        
         
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = mainStoryBoard.instantiateViewController(withIdentifier: "NavController") as! UINavigationController
