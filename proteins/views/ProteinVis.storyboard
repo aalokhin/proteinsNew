@@ -20,6 +20,10 @@
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ig-xo-ry0">
                                 <rect key="frame" x="0.0" y="40.5" width="375" height="590.5"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="KK6-6o-Hzf" appends="YES" id="N2Q-kw-gzM"/>
+                                </connections>
                             </sceneKitView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LAl-pE-cfY">
                                 <rect key="frame" x="0.0" y="639" width="375" height="29"/>
@@ -57,10 +61,16 @@
                     <connections>
                         <outlet property="sceneView" destination="4ig-xo-ry0" id="lEm-EA-xhD"/>
                         <outlet property="segmentedControl" destination="LAl-pE-cfY" id="qxg-HR-m5x"/>
+                        <outlet property="tapGestureRecognizer" destination="KK6-6o-Hzf" id="ScQ-fy-Scp"/>
                         <outlet property="topLabel" destination="cwH-tC-M13" id="3dQ-Lj-K8Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cch-ab-jxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KK6-6o-Hzf">
+                    <connections>
+                        <action selector="tapped:" destination="JoM-WZ-Lw7" id="qcO-sy-egc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="21.600000000000001" y="20.239880059970016"/>
         </scene>

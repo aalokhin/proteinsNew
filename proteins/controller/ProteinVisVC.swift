@@ -63,16 +63,17 @@ class ProteinVisVC : UIViewController{
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         //tapping gesture for a thing
-        
+    /*
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProteinVisVC.sceneTapped(recognizer:)))
         self.view.addGestureRecognizer(tapGesture)
+ */
         
         topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
 
     }
-    
+   /*
     
     @objc func sceneTapped(recognizer: UITapGestureRecognizer) {
         let location = recognizer.location(in: self.sceneView)
@@ -92,7 +93,35 @@ class ProteinVisVC : UIViewController{
             print("apped elswhere but node")
         }
     }
+ 
+ */
+    
+    /* tap gesture thrpugh Interface builder   */
 
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: self.sceneView)
+        
+        let hit = self.sceneView!.hitTest(location, options: nil)
+        if let tappedNode = hit.first?.node {
+            if let name = tappedNode.name {
+                print("node with a name has been tapped ")
+                topLabel.text = name
+            }
+            else {
+                topLabel.text = "no name node"
+                print("tapped on a node with no name")
+            }
+        } else {
+            topLabel.text = "no node tapped "
+            print("apped elswhere but node")
+        }
+    }
+    
+    
+    
+ /* tap gesture thrpugh Interface builder   */
     @objc func appMovedToBackground() {
         print("App moved to background! from  protein visualization VC")
         //self.navigationController?.popToRootViewController(animated: true)
