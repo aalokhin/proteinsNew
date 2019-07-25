@@ -22,6 +22,7 @@ extension ProteinVisVC {
                 return SCNNode()
             }
             atoms.append(atom)
+            
             let unit = SCNNode(geometry: atom.atomGeometry())
             unit.position = atom.position()
             atomsNode.addChildNode(unit)

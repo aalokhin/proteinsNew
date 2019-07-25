@@ -28,6 +28,7 @@ class Atom {
     
     func atomGeometry() -> SCNGeometry {
         let atom = SCNSphere(radius: 0.3)
+        
         atom.firstMaterial!.diffuse.contents = getCPKColor(el : element)
         atom.firstMaterial!.specular.contents = UIColor.white
         return atom

@@ -20,7 +20,7 @@ import UIKit
  
  let str : String = "https://files.rcsb.org/ligands/\(firstLetter)/\(protein)/\(protein)_ideal.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
  
- 
+let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)! //doesn't work for some reason screw this link
  let str : String = "https://files.rcsb.org/ligands/\(protein[0])/\(protein)/\(protein)_ideal.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
  
  */
@@ -33,18 +33,6 @@ extension ProteinVisVC {
             message : message,
             preferredStyle : UIAlertController.Style.alert
         );
-        /*
-        let alert = UIAlertController(title: "New Exercise Added", message: "\(name)", preferredStyle: UIAlertControllerStyle.Alert)
-       
-         alert.addAction(UIAlertAction(title: "Ok!!", style: UIAlertActionStyle.Default, handler: {
-            self.navigationController?.popToRootViewControllerAnimated(true)
-            // You only need the pop
-            //self.dismissViewControllerAnimated(true, completion: {})
-        }))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
-        */
-        
         let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default) { action in
             self.navigationController?.popViewController(animated: true)
         }
@@ -53,7 +41,6 @@ extension ProteinVisVC {
     }
     
     func getProteinModel(){
-       // let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)! //doesn't work for some reason screw this link
         let str : String = "https://files.rcsb.org/ligands/\(protein[0])/\(protein)/\(protein)_ideal.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         guard let urlProtein = URL(string: str) else {
             print("Error in building URL")

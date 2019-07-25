@@ -60,19 +60,13 @@ class ProteinVisVC : UIViewController{
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
-        
-        
         topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
 
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.popViewController(animated: true)
-//
-//    }
-    
+
     @objc func appMovedToBackground() {
         print("App moved to background! from  protein visualization VC")
         //self.navigationController?.popToRootViewController(animated: true)

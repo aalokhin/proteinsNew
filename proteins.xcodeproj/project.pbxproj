@@ -23,7 +23,7 @@
 		5D2E941722E1D79C00477FF6 /* proteinsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E941622E1D79C00477FF6 /* proteinsTests.swift */; };
 		5D2E942222E1D79C00477FF6 /* proteinsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E942122E1D79C00477FF6 /* proteinsUITests.swift */; };
 		5DF1565822E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */; };
-		5DF1565A22E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */; };
+		5DF1565A22E701E900759DB4 /* addingAtoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF1565922E701E900759DB4 /* addingAtoms.swift */; };
 		EF03A89722E328F1006DB8BD /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF03A89622E328F1006DB8BD /* LocalAuthentication.framework */; };
 		EF06EC4622E4877F008A2FE5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF06EC4522E4877F008A2FE5 /* Extensions.swift */; };
 		EFCC562C22E344D200C36535 /* ListProteins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFCC562B22E344D200C36535 /* ListProteins.storyboard */; };
@@ -70,7 +70,7 @@
 		5D2E942122E1D79C00477FF6 /* proteinsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = proteinsUITests.swift; sourceTree = "<group>"; };
 		5D2E942322E1D79C00477FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsForProteinVisVC.swift; sourceTree = "<group>"; };
-		5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseFileExtensionForVisProteinVC.swift; sourceTree = "<group>"; };
+		5DF1565922E701E900759DB4 /* addingAtoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addingAtoms.swift; sourceTree = "<group>"; };
 		EF03A89622E328F1006DB8BD /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		EF06EC4522E4877F008A2FE5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EFCC562B22E344D200C36535 /* ListProteins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListProteins.storyboard; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 			children = (
 				EF06EC4522E4877F008A2FE5 /* Extensions.swift */,
 				5DF1565722E6FD8A00759DB4 /* ExtensionsForProteinVisVC.swift */,
-				5DF1565922E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift */,
+				5DF1565922E701E900759DB4 /* addingAtoms.swift */,
 				5D1F587E22E84FA3009E7FB7 /* addingConnections.swift */,
 				5D1F588822E8660C009E7FB7 /* TableViewExtension.swift */,
 				5D1F588E22E86EF0009E7FB7 /* searchInListExtension.swift */,
@@ -352,7 +352,7 @@
 				5D16CAB522E5B5FD00FDB8FA /* Atom.swift in Sources */,
 				5D1F588F22E86EF0009E7FB7 /* searchInListExtension.swift in Sources */,
 				5D2E940222E1D79B00477FF6 /* AppDelegate.swift in Sources */,
-				5DF1565A22E701E900759DB4 /* ParseFileExtensionForVisProteinVC.swift in Sources */,
+				5DF1565A22E701E900759DB4 /* addingAtoms.swift in Sources */,
 				5D1F588922E8660C009E7FB7 /* TableViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
