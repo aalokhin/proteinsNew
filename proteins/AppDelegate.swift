@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     
         let topController = UIApplication.topViewController()
-        print(topController!)
+        print("moving to background from ", topController!)
         topController?.navigationController?.popToRootViewController(animated: false)
 
         
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+//not sure if this works
 extension UIApplication
 {
     class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
