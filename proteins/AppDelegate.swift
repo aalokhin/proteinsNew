@@ -27,18 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-       
-     /* This might be totally wrong to be honest*/
+       /* This might be totally wrong to be honest*/
        
         
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = mainStoryBoard.instantiateViewController(withIdentifier: "NavController") as! UINavigationController
-//        let mainViewController = mainStoryBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = navigationController
         
         
-            /* This might be totally wrong to be honest*/
+/* This might be totally wrong to be honest*/
         
         
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
