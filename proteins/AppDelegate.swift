@@ -16,10 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = mainStoryBoard.instantiateViewController(withIdentifier: "NavController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = navigationController
+        
+        /*
+         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+         let navigationController = mainStoryBoard.instantiateViewController(withIdentifier: "NavController") as! UINavigationController
+         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         appDelegate.window?.rootViewController = navigationController
+
+         */
         
         Thread.sleep(forTimeInterval: 3.0)
     
