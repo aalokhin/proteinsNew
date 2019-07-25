@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="83" id="Jcg-QK-8i3"/>
                                     <constraint firstAttribute="width" constant="96" id="VLl-ag-mqq"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="fingerprint-outline-variant"/>
+                                <state key="normal" title="Button" image="fingerprint"/>
                                 <connections>
                                     <action selector="fingerPrintAuthenticationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ppg-kG-o9a"/>
                                 </connections>
@@ -39,6 +39,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HKb-2e-Hq5"/>
                     <connections>
+                        <outlet property="touchIdButton" destination="Rej-Rw-DZY" id="4nu-mj-qTw"/>
                         <segue destination="dTc-5h-xhd" kind="show" identifier="ListProteinsSegue" id="08b-Xs-cZz"/>
                     </connections>
                 </viewController>
@@ -74,6 +75,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fingerprint-outline-variant" width="512" height="512"/>
+        <image name="fingerprint" width="512" height="512"/>
     </resources>
 </document>

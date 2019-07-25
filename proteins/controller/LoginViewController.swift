@@ -46,22 +46,32 @@ import LocalAuthentication
 
 class LoginViewController: UIViewController {
     var authenticated : Bool = false
+     var error: NSError?
+    let authenticationContext = LAContext()
+    var buttonImage : UIImage?
+    
+    @IBOutlet weak var touchIdButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hello")
-        // Do any additional setup after loading the view.
+        setUpLoginButton()
+        
     }
     
+    
+    
+    
     @IBAction func fingerPrintAuthenticationTapped(_ sender: UIButton) {
-        self.evokeVC()
+            self.evokeVC()
 
        //authenticateUser()
     }
     
     func authenticateUser() {
         let context = LAContext()
-        var error: NSError?
+       
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Identify yourself!"
@@ -72,13 +82,8 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
                     if success {
                         print("success")
-
                         self.evokeVC()
-                        
-                        
-                        
-                        
-                        //self.runSecretCode()
+                    //self.runSecretCode()
                     } else {
                         let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -101,6 +106,29 @@ class LoginViewController: UIViewController {
 
 
 extension LoginViewController {
+    
+    func setUpLoginButton(){
+        guard authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+            print("Authentication not supported")
+            return
+        }
+        switch authenticationContext.biometryType {
+        case .faceID:
+            buttonImage = UIImage(named: "face")
+            touchIdButton.setImage(buttonImage, for: .normal)
+            touchIdButton.isHidden = false
+            print("can authenticate with Face id")
+        case .touchID:
+            touchIdButton.isHidden = false
+            print("can authenticate with touch id")
+        case .none:
+            touchIdButton.isHidden = true
+            print("can't authenticate neither with touch id nor with face id")
+        @unknown default:
+            print("unknown default")
+            return
+        }
+    }
     
     func showAlertController(_ message: String) {
         
