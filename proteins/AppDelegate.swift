@@ -15,7 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = mainStoryBoard.instantiateViewController(withIdentifier: "NavController") as! UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = navigationController
+        
         Thread.sleep(forTimeInterval: 3.0)
+    
         // Override point for customization after application launch.
         return true
     }
@@ -30,11 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        /* This might be totally wrong to be honest*/
        // seems like there are leaks / need to figure this out https://guides.codepath.com/ios/View-Controller-Lifecycle
         
-        
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = mainStoryBoard.instantiateViewController(withIdentifier: "NavController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = navigationController
+    
+        let topController = UIApplication.topViewController()
+        print(topController!)
+        topController?.navigationController?.popToRootViewController(animated: false)
+
         
         
 /* This might be totally wrong to be honest*/
@@ -45,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        
         
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
@@ -58,5 +66,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension UIApplication
+{
+    class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
+    {
+        if let nav = base as? UINavigationController
+        {
+            let top = topViewController(nav.visibleViewController)
+            return top
+        }
+        
+        if let tab = base as? UITabBarController
+        {
+            if let selected = tab.selectedViewController
+            {
+                let top = topViewController(selected)
+                return top
+            }
+        }
+        
+        if let presented = base?.presentedViewController
+        {
+            let top = topViewController(presented)
+            return top
+        }
+        return base
+    }
 }
 
