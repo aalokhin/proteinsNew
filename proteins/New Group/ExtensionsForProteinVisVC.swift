@@ -49,6 +49,10 @@ extension ProteinVisVC {
         var request = URLRequest(url: urlProtein)
         request.httpMethod = "GET"
         
+        
+        
+        self.activityIndicator.startAnimating()
+        
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
             if let err = error {
                 self.callErrorWithCustomMessage("Some error in request")
@@ -81,7 +85,11 @@ extension ProteinVisVC {
                 }
                 print("we added atoms and bonds")
                // self.printAll()
-                self.sceneSetup()
+                DispatchQueue.main.async {
+                    self.activityIndicator.startAnimating()
+                     self.sceneSetup()
+                }
+               
             }
         }
         task.resume()

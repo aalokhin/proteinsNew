@@ -39,6 +39,8 @@ class ProteinVisVC : UIViewController{
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sceneView: SCNView!
+    let activityIndicator = UIActivityIndicatorView()
+    
     var protein : String = ""
     
     var bondsNbr : Int = 0
@@ -66,6 +68,15 @@ class ProteinVisVC : UIViewController{
         //to be able to notify us if the app was moved to background
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        
+        activityIndicator.center = CGPoint(x: sceneView.bounds.midX, y: sceneView.bounds.midY)
+        activityIndicator.hidesWhenStopped = true
+        sceneView.addSubview(activityIndicator)
+        
+//        activityIndicator.startAnimating()
+        
+       // activityInd.startAnimating()
         //tapping gesture for a thing
     /*
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProteinVisVC.sceneTapped(recognizer:)))
