@@ -36,7 +36,7 @@
  • Display the ligand model in 3D ✅
  • You must use CPK coloring ✅
  • You should at least represent the ligand using Balls and Sticks model ✅
- • When clicking on an atom display the atom type (C, H, O, etc.)  // almost --- > ☑️
+ • When clicking on an atom display the atom type (C, H, O, etc.)  // almost --- > ✅
  • Share your modelisation through a ‘Share‘ button ✅
  • You should be able to ‘play‘ (zoom, rotate...) with the ligand in Scene Kit ✅
  */
