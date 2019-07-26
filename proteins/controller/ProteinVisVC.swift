@@ -136,7 +136,7 @@ class ProteinVisVC : UIViewController{
     }
     
     func addTextNode(tappedNode : SCNNode, name : String){
-        let text = SCNText(string: name, extrusionDepth: 0.02)
+        let text = SCNText(string: name, extrusionDepth: 0.01)
         let font = UIFont(name: "Futura", size: 0.5)
         text.font = font
         text.alignmentMode = CATextLayerAlignmentMode.center.rawValue
@@ -147,7 +147,7 @@ class ProteinVisVC : UIViewController{
         
         let position = tappedNode.position
         let x = position.x
-        let y  = position.y + 0.03
+        let y  = position.y + 0.01
         let z = position.z
         let v = SCNVector3Make(x, y, z)
         textNode.position = v
@@ -164,14 +164,12 @@ class ProteinVisVC : UIViewController{
         {
         case 0:
             atomTextNodeAll.removeFromParentNode()
-           print("case 0 ")
-        //show popular view
+            print("case 0 ")
         case 1:
             atomTextNode?.removeFromParentNode()
             print("case 1: let's add titles to all nodes")
         
             sceneView.scene?.rootNode.addChildNode(atomTextNodeAll)
-        //show history view
         default:
             break;
         }

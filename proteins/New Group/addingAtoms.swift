@@ -54,9 +54,9 @@ extension ProteinVisVC {
             text.firstMaterial?.isDoubleSided = true
             let textNode = SCNNode(geometry: text)
             let position = one.position
-            let x = position.x
-            let y  = position.y + 0.03
-            let z = position.z
+            let x : Float = position.x
+            let y : Float = position.y + 0.09
+            let z : Float = position.z
             let v = SCNVector3Make(x, y, z)
             textNode.position = v
             // print(textNode.position)
