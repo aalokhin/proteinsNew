@@ -52,6 +52,7 @@ extension ProteinVisVC {
         
         
         self.activityIndicator.startAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let task = URLSession.shared.dataTask(with: request) {data, response, error in
             if let err = error {
@@ -86,7 +87,8 @@ extension ProteinVisVC {
                 print("we added atoms and bonds")
                // self.printAll()
                 DispatchQueue.main.async {
-                    self.activityIndicator.startAnimating()
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                      self.sceneSetup()
                 }
                

@@ -83,6 +83,7 @@ class ListProteinsVC: UIViewController {
                     print("We have this many proteins => ", self.unFilteredProteins.count)
                     DispatchQueue.main.async {
                         self.setUpSearchBar()
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         self.tableView.reloadData()
                     }
                 }

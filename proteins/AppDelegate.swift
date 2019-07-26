@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 // https://medium.com/@stasost/ios-root-controller-navigation-3625eedbbff useful resource
+    
+  //  https://www.freecodecamp.org/news/how-to-handle-internet-connection-reachability-in-swift-34482301ea57/ -> for activity in case offline
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,8 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          appDelegate.window?.rootViewController = navigationController
 
          */
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         
         Thread.sleep(forTimeInterval: 3.0)
+        
     
         // Override point for customization after application launch.
         return true
