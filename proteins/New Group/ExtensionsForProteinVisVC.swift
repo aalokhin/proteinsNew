@@ -110,8 +110,10 @@ extension ProteinVisVC {
     
     //copypaste from Stac Ovrflow
     @objc func share(sender:UIView){
-        let image : UIImage = sceneView.snapshot()
-        let imageToShare = [image]
+       
+        var imageToShare : [UIImage] = []
+        let image = sceneView.snapshot()
+        imageToShare.append(image)
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         self.present(activityViewController, animated: true, completion: nil)

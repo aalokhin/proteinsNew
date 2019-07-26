@@ -30,10 +30,10 @@
  • You must list all the ligands provided in ligands.txt (see resources) ✅
  • You should be able to search a ligand through the list ✅
  • If you cannot load the ligand through the website display a warning popup ✅
- • When loading the ligand you should display the spinning wheel of the activity monitor
+ • When loading the ligand you should display the spinning wheel of the activity monitor ☑️ ===> too fast to understand what's happening:c
  
  Protein View Controller:
- • Display the ligand model in 3D ✅
+ • Display the ligand model in 3D ✅ ==== > still need to fix connection and all the staff
  • You must use CPK coloring ✅
  • You should at least represent the ligand using Balls and Sticks model ✅
  • When clicking on an atom display the atom type (C, H, O, etc.)  // almost --- > ✅
