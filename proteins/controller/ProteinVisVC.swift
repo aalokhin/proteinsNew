@@ -56,6 +56,9 @@ class ProteinVisVC : UIViewController{
     var geometryNodeCon : SCNNode = SCNNode()
     
     
+    var atomTextNode : SCNNode?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +71,17 @@ class ProteinVisVC : UIViewController{
         self.view.addGestureRecognizer(tapGesture)
  */
         
+        
+        /* We should add a zoom in zoom out with double tap
+         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+         tap.numberOfTapsRequired = 2
+         view.addGestureRecognizer(tap)
+         }
+         
+         @objc func doubleTapped() {
+         // do something here
+         }
+ */
         topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
@@ -102,21 +116,46 @@ class ProteinVisVC : UIViewController{
     
     @IBAction func tapped(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: self.sceneView)
-        
+        atomTextNode?.removeFromParentNode()
         let hit = self.sceneView!.hitTest(location, options: nil)
         if let tappedNode = hit.first?.node {
             if let name = tappedNode.name {
                 print("node with a name has been tapped ")
-                topLabel.text = name
+                addTextNode(tappedNode : tappedNode, name : name)
+                
             }
             else {
-                topLabel.text = "no name node"
+                //topLabel.text = "no name node"
                 print("tapped on a node with no name")
             }
         } else {
-            topLabel.text = "no node tapped "
-            print("apped elswhere but node")
+            //topLabel.text = "no node tapped "
+            print("tapped elswhere but node")
         }
+    }
+    
+    func addTextNode(tappedNode : SCNNode, name : String){
+        let text = SCNText(string: name, extrusionDepth: 0.02)
+        let font = UIFont(name: "Futura", size: 0.5)
+        text.font = font
+        text.alignmentMode = CATextLayerAlignmentMode.center.rawValue
+        text.firstMaterial?.diffuse.contents = UIColor.red
+        text.firstMaterial?.specular.contents = UIColor.black
+        text.firstMaterial?.isDoubleSided = true
+        let textNode = SCNNode(geometry: text)
+        
+        let position = tappedNode.position
+        let x = position.x
+        let y  = position.y + 0.03
+        let z = position.z
+        let v = SCNVector3Make(x, y, z)
+        textNode.position = v
+        print(textNode.position)
+        atomTextNode = textNode
+        if (atomTextNode != nil){
+            sceneView.scene!.rootNode.addChildNode(atomTextNode!)
+        }
+        
     }
     
     
