@@ -31,6 +31,9 @@
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlChange:" destination="JoM-WZ-Lw7" eventType="valueChanged" id="Swl-D6-wRP"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwH-tC-M13">
                                 <rect key="frame" x="0.0" y="20" width="375" height="20.5"/>

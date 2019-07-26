@@ -57,6 +57,7 @@ class ProteinVisVC : UIViewController{
     
     
     var atomTextNode : SCNNode?
+    var atomTextNodeAll = SCNNode()
     
     
     override func viewDidLoad() {
@@ -158,6 +159,24 @@ class ProteinVisVC : UIViewController{
         
     }
     
+    @IBAction func segmentedControlChange(_ sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            atomTextNodeAll.removeFromParentNode()
+           print("case 0 ")
+        //show popular view
+        case 1:
+            atomTextNode?.removeFromParentNode()
+            print("case 1: let's add titles to all nodes")
+        
+            sceneView.scene?.rootNode.addChildNode(atomTextNodeAll)
+        //show history view
+        default:
+            break;
+        }
+    }
+
     
     
  /* tap gesture thrpugh Interface builder   */
@@ -172,6 +191,7 @@ class ProteinVisVC : UIViewController{
         sceneView.allowsCameraControl = true
         geometryNodeAtom = allAtoms()
         geometryNodeCon = allConnections()
+        addTextNodeToAll()
         let geometryNode = SCNNode()
         geometryNode.addChildNode(geometryNodeAtom)
         geometryNode.addChildNode(geometryNodeCon)

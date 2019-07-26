@@ -41,4 +41,27 @@ extension ProteinVisVC {
         let atom = Atom(x : x, y : y, z : z, el : elem, seqNr : seqNr)
         return atom
     }
+    
+    func addTextNodeToAll(){
+        for one in geometryNodeAtom.childNodes {
+            
+            let text = SCNText(string: one.name, extrusionDepth: 0.02)
+            let font = UIFont(name: "Futura", size: 0.5)
+            text.font = font
+            text.alignmentMode = CATextLayerAlignmentMode.center.rawValue
+            text.firstMaterial?.diffuse.contents = UIColor.red
+            text.firstMaterial?.specular.contents = UIColor.black
+            text.firstMaterial?.isDoubleSided = true
+            let textNode = SCNNode(geometry: text)
+            let position = one.position
+            let x = position.x
+            let y  = position.y + 0.03
+            let z = position.z
+            let v = SCNVector3Make(x, y, z)
+            textNode.position = v
+            // print(textNode.position)
+            atomTextNodeAll.addChildNode(textNode)
+        }
+    }
+
 }
