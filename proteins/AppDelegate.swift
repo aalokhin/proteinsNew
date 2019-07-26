@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          appDelegate.window?.rootViewController = navigationController
 
          */
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         

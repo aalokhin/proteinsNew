@@ -61,9 +61,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func fingerPrintAuthenticationTapped(_ sender: UIButton) {
-            self.evokeVC()
-
-       //authenticateUser() // this thing is supposed to allow authentication
+       // self.evokeVC()
+        authenticateUser() // this thing is supposed to allow authentication
     }
     
     func authenticateUser() {
@@ -77,14 +76,15 @@ class LoginViewController: UIViewController {
                         self.evokeVC()
                         //self.runSecretCode()
                     } else {
-                        let ac = UIAlertController(title: "Authentication failed", message: "Sorry!", preferredStyle: .alert)
-                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(ac, animated: true)
+                        self.callErrorWithCustomMessage("Authentication failed")
+                        
                     }
                 }
             }
         } else {
             print("we'll get back some day")
+            touchIdButton.isHidden =  true
+            self.callErrorWithCustomMessage("Your hardware doesn't support biometric authentication")
         }
     }
     
@@ -120,16 +120,20 @@ extension LoginViewController {
         }
     }
     
-    func showAlertController(_ message: String) {
-        
+  
+    func callErrorWithCustomMessage(_ message : String) {
         let alert = UIAlertController(
-            title: "Error",
-            message: message,
-            preferredStyle: UIAlertController.Style.alert
+            title : "Error",
+            message : message,
+            preferredStyle : UIAlertController.Style.alert
         );
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default) { action in
+            self.authenticateUser()
+        }
+        alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
+    
 }
 
 
