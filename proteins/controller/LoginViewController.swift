@@ -70,9 +70,10 @@ class LoginViewController: UIViewController {
     }
     
     func authenticateUser() {
-        if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+        
+        //authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Identify yourself!"
-            authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+            authenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
                 [unowned self] success, authenticationError in
                 
                 DispatchQueue.main.async {
@@ -81,14 +82,10 @@ class LoginViewController: UIViewController {
                         self.evokeVC()
                     }
                     else {
-                        //when user cancels or chooses not to use face id
                         if let error = authenticationError {
                             print(">>>>",  error.localizedDescription)
                             if (self.authCancelledOrFallbackSelected(error) == false){
                                 self.callErrorWithCustomMessage("Authentication failed")
-                            }
-                            if (error.localizedDescription == "Fallback authentication mechanism selected."){
-                                print("we need to set up passcode running")
                             }
                         }
                     }
@@ -97,14 +94,6 @@ class LoginViewController: UIViewController {
                 }
 
             }
-        }  else if (authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)){
-            
-            print("we need to set up passcode")
-        } else {
-           // self.evokeVC()
-            print("we'll get back some day")
-            self.callErrorWithCustomMessage("Your hardware doesn't support biometric authentication")
-        }
     }
     
     func authCancelledOrFallbackSelected(_ authenticationError : Error)-> Bool {
