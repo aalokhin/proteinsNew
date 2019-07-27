@@ -55,6 +55,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if let backgroundImg = UIImage(named: "dark"){
+//            self.view.backgroundColor = UIColor(patternImage: backgroundImg)
+//        }
         touchIdButton.isHidden = true
         print("hello")
         setUpLoginButton()
@@ -111,6 +114,8 @@ extension LoginViewController {
             touchIdButton.isHidden = false
             print("can authenticate with Face id")
         case .touchID:
+            buttonImage = UIImage(named: "whitetouch")
+            touchIdButton.setImage(buttonImage, for: .normal)
             touchIdButton.isHidden = false
             print("can authenticate with touch id")
         case .none:
