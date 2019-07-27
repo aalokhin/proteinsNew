@@ -63,7 +63,6 @@ class ProteinVisVC : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  topLabel.isHidden = true
         self.title = "Ligand: \(protein)"
         
         //to be able to notify us if the app was moved to background
@@ -74,7 +73,6 @@ class ProteinVisVC : UIViewController{
         activityIndicator.center = CGPoint(x: sceneView.bounds.midX, y: sceneView.bounds.midY)
         activityIndicator.hidesWhenStopped = true
         sceneView.addSubview(activityIndicator)
-        //topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
 
@@ -94,11 +92,9 @@ class ProteinVisVC : UIViewController{
                 
             }
             else {
-                //topLabel.text = "no name node"
                 print("tapped on a node with no name")
             }
         } else {
-            //topLabel.text = "no node tapped "
             print("tapped elswhere but node")
         }
     }
