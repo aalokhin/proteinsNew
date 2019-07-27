@@ -95,7 +95,7 @@ class LoginViewController: UIViewController {
 
             }
     }
-    
+    //https://stackoverflow.com/questions/52256440/authentication-failed-and-try-face-id-again-does-nothing <<---- face id issue
     func authCancelledOrFallbackSelected(_ authenticationError : Error)-> Bool {
         if (authenticationError.localizedDescription == "Canceled by user."){
             return true
