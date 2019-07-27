@@ -81,10 +81,14 @@ class LoginViewController: UIViewController {
                         self.evokeVC()
                     }
                     else {
+                        //when user cancels or chooses not to use face id
                         if let error = authenticationError {
-                            print(error.localizedDescription)
+                            print(">>>>",  error.localizedDescription)
                             if (self.authCancelledOrFallbackSelected(error) == false){
                                 self.callErrorWithCustomMessage("Authentication failed")
+                            }
+                            if(error.localizedDescription == "Fallback authentication mechanism selected."){
+                                
                             }
                         }
                     }
@@ -93,8 +97,8 @@ class LoginViewController: UIViewController {
                 }
 
             }
-        } else {
-            self.evokeVC()
+        }  else {
+           // self.evokeVC()
             print("we'll get back some day")
             
             touchIdButton.isHidden =  true
@@ -123,28 +127,39 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     
     func setUpLoginButton(){
-        guard authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
-            print("Authentication not supported")
-            callErrorWithCustomMessage("Biometric authentication not supported")
-            return
-        }
-        switch authenticationContext.biometryType {
-        case .faceID:
-            buttonImage = UIImage(named: "facewhite")
-            touchIdButton.setImage(buttonImage, for: .normal)
-            touchIdButton.isHidden = false
-            print("can authenticate with Face id")
-        case .touchID:
-            buttonImage = UIImage(named: "whitetouch2")
-            touchIdButton.setImage(buttonImage, for: .normal)
-            touchIdButton.isHidden = false
-            print("can authenticate with touch id")
-        case .none:
-            touchIdButton.isHidden = true
-            print("can't authenticate neither with touch id nor with face id")
-        @unknown default:
-            print("unknown default")
-            return
+        if (authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)) {
+//            else {
+//            print("Authentication not supported")
+//            callErrorWithCustomMessage("Biometric authentication not supported")
+//
+//            return
+//        }
+            switch authenticationContext.biometryType {
+            case .faceID:
+                buttonImage = UIImage(named: "facewhite")
+                touchIdButton.setImage(buttonImage, for: .normal)
+                touchIdButton.isHidden = false
+                print("can authenticate with Face id")
+            case .touchID:
+                buttonImage = UIImage(named: "whitetouch2")
+                touchIdButton.setImage(buttonImage, for: .normal)
+                touchIdButton.isHidden = false
+                print("can authenticate with touch id")
+            case .none:
+                touchIdButton.isHidden = true
+                print("can't authenticate neither with touch id nor with face id")
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                if (authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)){
+                    print("no biometry but we can use passcode")
+                }
+                //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            @unknown default:
+                print("unknown default")
+                return
+            }
+        } else {
+            print("user didn't set any authentication.")
+            evokeVC()
         }
     }
  
