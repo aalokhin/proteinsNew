@@ -127,7 +127,7 @@
 		5D2E940022E1D79B00477FF6 /* proteins */ = {
 			isa = PBXGroup;
 			children = (
-				EF06EC4422E48746008A2FE5 /* New Group */,
+				EF06EC4422E48746008A2FE5 /* Extensions */,
 				EFCC562A22E344A500C36535 /* model */,
 				EFCC562922E3448900C36535 /* controller */,
 				EFCC562822E3447A00C36535 /* views */,
@@ -166,7 +166,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EF06EC4422E48746008A2FE5 /* New Group */ = {
+		EF06EC4422E48746008A2FE5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				EF06EC4522E4877F008A2FE5 /* Extensions.swift */,
@@ -176,7 +176,7 @@
 				5D1F588822E8660C009E7FB7 /* TableViewExtension.swift */,
 				5D1F588E22E86EF0009E7FB7 /* searchInListExtension.swift */,
 			);
-			path = "New Group";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EFCC562822E3447A00C36535 /* views */ = {

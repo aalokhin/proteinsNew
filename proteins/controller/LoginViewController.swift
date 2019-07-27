@@ -55,6 +55,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        touchIdButton.isHidden = true
         print("hello")
         setUpLoginButton()
         
@@ -74,9 +75,9 @@ class LoginViewController: UIViewController {
                     if success {
                         print("success")
                         self.evokeVC()
-                        //self.runSecretCode()
+                        
                     } else {
-                        self.callErrorWithCustomMessage("Authentication failed")
+                        self.callErrorWithCustomMessageAndTryReauthentication("Authentication failed")
                         
                     }
                 }
@@ -100,6 +101,7 @@ extension LoginViewController {
     func setUpLoginButton(){
         guard authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             print("Authentication not supported")
+            callErrorWithCustomMessage("Biometric authentication not supported")
             return
         }
         switch authenticationContext.biometryType {
@@ -121,7 +123,7 @@ extension LoginViewController {
     }
     
   
-    func callErrorWithCustomMessage(_ message : String) {
+    func callErrorWithCustomMessageAndTryReauthentication(_ message : String) {
         let alert = UIAlertController(
             title : "Error",
             message : message,
@@ -130,6 +132,18 @@ extension LoginViewController {
         let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default) { action in
             self.authenticateUser()
         }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func callErrorWithCustomMessage(_ message : String) {
+        let alert = UIAlertController(
+            title : "Error",
+            message : message,
+            preferredStyle : UIAlertController.Style.alert
+        );
+        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default)
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }

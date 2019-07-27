@@ -73,55 +73,11 @@ class ProteinVisVC : UIViewController{
         activityIndicator.center = CGPoint(x: sceneView.bounds.midX, y: sceneView.bounds.midY)
         activityIndicator.hidesWhenStopped = true
         sceneView.addSubview(activityIndicator)
-        
-//        activityIndicator.startAnimating()
-        
-       // activityInd.startAnimating()
-        //tapping gesture for a thing
-    /*
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProteinVisVC.sceneTapped(recognizer:)))
-        self.view.addGestureRecognizer(tapGesture)
- */
-        
-        
-        /* We should add a zoom in zoom out with double tap
-         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-         tap.numberOfTapsRequired = 2
-         view.addGestureRecognizer(tap)
-         }
-         
-         @objc func doubleTapped() {
-         // do something here
-         }
- */
         topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
 
     }
-   /*
-    
-    @objc func sceneTapped(recognizer: UITapGestureRecognizer) {
-        let location = recognizer.location(in: self.sceneView)
-        
-        let hit = self.sceneView!.hitTest(location, options: nil)
-        if let tappedNode = hit.first?.node {
-            if let name = tappedNode.name {
-                print("node with a name has been tapped ")
-                topLabel.text = name
-            }
-            else {
-                 topLabel.text = "no name node"
-                print("tapped on a node with no name")
-            }
-        } else {
-             topLabel.text = "no node tapped "
-            print("apped elswhere but node")
-        }
-    }
- 
- */
-    
     /* tap gesture thrpugh Interface builder   */
 
     @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
@@ -167,7 +123,6 @@ class ProteinVisVC : UIViewController{
         if (atomTextNode != nil){
             sceneView.scene!.rootNode.addChildNode(atomTextNode!)
         }
-        
     }
     
     @IBAction func segmentedControlChange(_ sender: UISegmentedControl) {
@@ -190,7 +145,7 @@ class ProteinVisVC : UIViewController{
     
  /* tap gesture thrpugh Interface builder   */
     @objc func appMovedToBackground() {
-        print("App moved to background! from  protein visualization VC")
+        print("App moved to background from protein visualization VC")
         //self.navigationController?.popToRootViewController(animated: true)
     }
     

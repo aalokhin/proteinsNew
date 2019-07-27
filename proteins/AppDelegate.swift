@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
          */
         
-        UIApplication.shared.statusBarStyle = .lightContent
+
         
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

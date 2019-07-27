@@ -27,11 +27,7 @@ class ListProteinsVC: UIViewController {
     var shouldShowSearchResults = false
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
     var unFilteredProteins : [String] = []
-    
-//    let searchController = UISearchController(searchResultsController: nil)
-
     @IBOutlet weak var tableView: UITableView!
     
     
