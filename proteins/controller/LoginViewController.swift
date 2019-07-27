@@ -47,7 +47,7 @@ import LocalAuthentication
 class LoginViewController: UIViewController {
     var authenticated : Bool = false
      var error: NSError?
-    let authenticationContext = LAContext()
+    var authenticationContext = LAContext()
     var buttonImage : UIImage?
     
     @IBOutlet weak var touchIdButton: UIButton!
@@ -74,16 +74,24 @@ class LoginViewController: UIViewController {
             let reason = "Identify yourself!"
             authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
                 [unowned self] success, authenticationError in
+                
                 DispatchQueue.main.async {
                     if success {
                         print("success")
                         self.evokeVC()
-                        
-                    } else {
-                        self.callErrorWithCustomMessageAndTryReauthentication("Authentication failed")
                     }
+                    else {
+                        if let error = authenticationError {
+                            print(error.localizedDescription)
+                            if (self.authCancelledOrFallbackSelected(error) == false){
+                                self.callErrorWithCustomMessage("Authentication failed")
+                            }
+                        }
+                    }
+                    
+                    self.authenticationContext = LAContext()
                 }
-               
+
             }
         } else {
             self.evokeVC()
@@ -94,6 +102,17 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func authCancelledOrFallbackSelected(_ authenticationError : Error)-> Bool {
+        if (authenticationError.localizedDescription == "Canceled by user."){
+            return true
+        } else if (authenticationError.localizedDescription == "Fallback authentication mechanism selected.") {
+            return true
+            
+        } else {
+            return false
+        }
+        
+    }
     func evokeVC(){
         performSegue(withIdentifier: "ListProteinsSegue", sender: self)
     }
@@ -128,22 +147,7 @@ extension LoginViewController {
             return
         }
     }
-    
-  
-    func callErrorWithCustomMessageAndTryReauthentication(_ message : String) {
-        let alert = UIAlertController(
-            title : "Error",
-            message : message,
-            preferredStyle : UIAlertController.Style.alert
-        );
-        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default) { action in
-            self.authenticateUser()
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    
+ 
     
 }
 
