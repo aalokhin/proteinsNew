@@ -32,6 +32,19 @@ extension String {
     }
     
 }
+extension ListProteinsVC {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
+extension UINavigationController {
+    
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        print("herererererer")
+        return .lightContent
+    }
+}
 
 extension SCNVector3 {
     var length : Float {
