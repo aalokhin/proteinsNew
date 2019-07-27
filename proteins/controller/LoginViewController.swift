@@ -109,12 +109,12 @@ extension LoginViewController {
         }
         switch authenticationContext.biometryType {
         case .faceID:
-            buttonImage = UIImage(named: "face")
+            buttonImage = UIImage(named: "facewhite")
             touchIdButton.setImage(buttonImage, for: .normal)
             touchIdButton.isHidden = false
             print("can authenticate with Face id")
         case .touchID:
-            buttonImage = UIImage(named: "whitetouch")
+            buttonImage = UIImage(named: "whitetouch2")
             touchIdButton.setImage(buttonImage, for: .normal)
             touchIdButton.isHidden = false
             print("can authenticate with touch id")

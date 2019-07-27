@@ -65,6 +65,8 @@ class ProteinVisVC : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "some title"
+        
         //to be able to notify us if the app was moved to background
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
