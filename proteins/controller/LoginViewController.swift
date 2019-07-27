@@ -87,8 +87,8 @@ class LoginViewController: UIViewController {
                             if (self.authCancelledOrFallbackSelected(error) == false){
                                 self.callErrorWithCustomMessage("Authentication failed")
                             }
-                            if(error.localizedDescription == "Fallback authentication mechanism selected."){
-                                
+                            if (error.localizedDescription == "Fallback authentication mechanism selected."){
+                                print("we need to set up passcode running")
                             }
                         }
                     }
@@ -97,11 +97,12 @@ class LoginViewController: UIViewController {
                 }
 
             }
-        }  else {
+        }  else if (authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)){
+            
+            print("we need to set up passcode")
+        } else {
            // self.evokeVC()
             print("we'll get back some day")
-            
-            touchIdButton.isHidden =  true
             self.callErrorWithCustomMessage("Your hardware doesn't support biometric authentication")
         }
     }
@@ -140,25 +141,36 @@ extension LoginViewController {
                 touchIdButton.setImage(buttonImage, for: .normal)
                 touchIdButton.isHidden = false
                 print("can authenticate with Face id")
+                return
             case .touchID:
                 buttonImage = UIImage(named: "whitetouch2")
                 touchIdButton.setImage(buttonImage, for: .normal)
                 touchIdButton.isHidden = false
                 print("can authenticate with touch id")
+                return
             case .none:
                 touchIdButton.isHidden = true
                 print("can't authenticate neither with touch id nor with face id")
+                
                 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                if (authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)){
-                    print("no biometry but we can use passcode")
-                }
+                
                 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             @unknown default:
                 print("unknown default")
                 return
             }
+        }
+        
+        if (authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)){
+            buttonImage = UIImage(named: "pass")
+            touchIdButton.setImage(buttonImage, for: .normal)
+            touchIdButton.isHidden = false
+            
+            print("no biometry but we can use passcode")
         } else {
+            
             print("user didn't set any authentication.")
+            
             evokeVC()
         }
     }
