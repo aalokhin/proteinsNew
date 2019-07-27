@@ -40,7 +40,7 @@ class ListProteinsVC: UIViewController {
         
         let nib = UINib.init(nibName: "LigandCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "LigandCell")
-        
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "fallingman"))
         readFromFile()
         print("hello from ListProteinsVC")
     }

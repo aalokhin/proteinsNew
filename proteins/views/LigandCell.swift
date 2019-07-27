@@ -15,6 +15,9 @@ class LigandCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.backgroundColor = .clear
+        self.contentView.backgroundColor = UIColor(white: 1, alpha: 0.2)
         // Initialization code
     }
     
