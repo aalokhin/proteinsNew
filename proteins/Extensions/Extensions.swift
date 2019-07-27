@@ -38,6 +38,19 @@ extension ListProteinsVC {
     }
 }
 
+extension UIViewController {
+    func callErrorWithCustomMessage(_ message : String) {
+        let alert = UIAlertController(
+            title : "Error",
+            message : message,
+            preferredStyle : UIAlertController.Style.alert
+        );
+        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
 extension UINavigationController {
     
     open override var preferredStatusBarStyle: UIStatusBarStyle {

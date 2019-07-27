@@ -81,12 +81,14 @@ class LoginViewController: UIViewController {
                         
                     } else {
                         self.callErrorWithCustomMessageAndTryReauthentication("Authentication failed")
-                        
                     }
                 }
+               
             }
         } else {
+            self.evokeVC()
             print("we'll get back some day")
+            
             touchIdButton.isHidden =  true
             self.callErrorWithCustomMessage("Your hardware doesn't support biometric authentication")
         }
@@ -142,16 +144,6 @@ extension LoginViewController {
     }
     
     
-    func callErrorWithCustomMessage(_ message : String) {
-        let alert = UIAlertController(
-            title : "Error",
-            message : message,
-            preferredStyle : UIAlertController.Style.alert
-        );
-        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
     
 }
 

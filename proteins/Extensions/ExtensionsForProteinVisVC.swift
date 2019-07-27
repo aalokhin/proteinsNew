@@ -27,19 +27,6 @@ let str : String = "https://files.rcsb.org/ligands/view/\(protein)_model.pdb".ad
 
 extension ProteinVisVC {
     //to evoke view controller
-    func callErrorWithCustomMessage(_ message : String) {
-        let alert = UIAlertController(
-            title : "Error",
-            message : message,
-            preferredStyle : UIAlertController.Style.alert
-        );
-        let action = UIAlertAction(title: "allright, thank you", style: UIAlertAction.Style.default) { action in
-            self.navigationController?.popViewController(animated: true)
-        }
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func getProteinModel(){
         let str : String = "https://files.rcsb.org/ligands/\(protein[0])/\(protein)/\(protein)_ideal.pdb".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         guard let urlProtein = URL(string: str) else {
