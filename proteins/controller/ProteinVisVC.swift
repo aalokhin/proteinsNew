@@ -36,7 +36,6 @@ import SceneKit
 
 class ProteinVisVC : UIViewController{
     
-    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var sceneView: SCNView!
     let activityIndicator = UIActivityIndicatorView()
@@ -64,7 +63,7 @@ class ProteinVisVC : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topLabel.isHidden = true
+      //  topLabel.isHidden = true
         self.title = "Ligand: \(protein)"
         
         //to be able to notify us if the app was moved to background
@@ -75,7 +74,7 @@ class ProteinVisVC : UIViewController{
         activityIndicator.center = CGPoint(x: sceneView.bounds.midX, y: sceneView.bounds.midY)
         activityIndicator.hidesWhenStopped = true
         sceneView.addSubview(activityIndicator)
-        topLabel.text = protein
+        //topLabel.text = protein
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         getProteinModel()
 
