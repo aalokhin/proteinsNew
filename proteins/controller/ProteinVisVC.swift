@@ -64,8 +64,8 @@ class ProteinVisVC : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "some title"
+        topLabel.isHidden = true
+        self.title = "Ligand: \(protein)"
         
         //to be able to notify us if the app was moved to background
         let notificationCenter = NotificationCenter.default
