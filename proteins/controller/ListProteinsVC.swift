@@ -18,11 +18,11 @@ import UIKit
 class ListProteinsVC: UIViewController {
     
     var filteredProteins : [String] = []
-    var unFilteredProteinsTest : [String] = ["001",
-                                         "011",
-    "031",
-    "041",
-    "04G"]
+//    var unFilteredProteinsTest : [String] = ["001",
+//                                         "011",
+//    "031",
+//    "041",
+//    "04G"]
     
     var shouldShowSearchResults = false
     
@@ -74,7 +74,13 @@ class ListProteinsVC: UIViewController {
                     }
                     // print(utf8Text)
                     self.unFilteredProteins = utf8Text.components(separatedBy: .whitespacesAndNewlines)
+                    self.unFilteredProteins.removeLast()
                     self.unFilteredProteins.append("masha")
+                    
+                    for i in self.unFilteredProteins{
+                        print("[\(i)]")
+                    }
+                    
 
                     print("We have this many proteins => ", self.unFilteredProteins.count)
                     DispatchQueue.main.async {

@@ -18,32 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" barStyle="black" placeholder="Please enter the ligand here" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-Dw-T39">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="6cm-TA-eOQ" id="THa-us-aHx"/>
-                                </connections>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-g5-mcn">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="6cm-TA-eOQ" id="dQW-vl-y4b"/>
-                                    <outlet property="delegate" destination="6cm-TA-eOQ" id="Rdh-uf-Muw"/>
-                                </connections>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VWG-rA-24A">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Please enter the ligand here" translatesAutoresizingMaskIntoConstraints="NO" id="oTn-Dw-T39">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="6cm-TA-eOQ" id="THa-us-aHx"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmf-g5-mcn">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="591"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="6cm-TA-eOQ" id="dQW-vl-y4b"/>
+                                            <outlet property="delegate" destination="6cm-TA-eOQ" id="Rdh-uf-Muw"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nmf-g5-mcn" firstAttribute="top" secondItem="oTn-Dw-T39" secondAttribute="bottom" id="3s7-0k-LvC"/>
-                            <constraint firstItem="nmf-g5-mcn" firstAttribute="bottom" secondItem="PK7-1h-Nem" secondAttribute="bottom" id="7Pk-AE-0dU"/>
-                            <constraint firstItem="nmf-g5-mcn" firstAttribute="top" secondItem="oTn-Dw-T39" secondAttribute="bottom" id="XfU-wx-32n"/>
-                            <constraint firstItem="nmf-g5-mcn" firstAttribute="trailing" secondItem="PK7-1h-Nem" secondAttribute="trailing" id="aXo-Zs-C9i"/>
-                            <constraint firstItem="oTn-Dw-T39" firstAttribute="trailing" secondItem="PK7-1h-Nem" secondAttribute="trailing" id="fOW-Yf-NiY"/>
-                            <constraint firstItem="oTn-Dw-T39" firstAttribute="top" secondItem="PK7-1h-Nem" secondAttribute="top" id="fjV-Li-qwo"/>
-                            <constraint firstItem="oTn-Dw-T39" firstAttribute="leading" secondItem="PK7-1h-Nem" secondAttribute="leading" id="jrp-0S-Qzv"/>
-                            <constraint firstItem="nmf-g5-mcn" firstAttribute="leading" secondItem="PK7-1h-Nem" secondAttribute="leading" id="zPO-Fy-UdN"/>
+                            <constraint firstItem="VWG-rA-24A" firstAttribute="leading" secondItem="PK7-1h-Nem" secondAttribute="leading" id="KXI-1s-yqI"/>
+                            <constraint firstItem="VWG-rA-24A" firstAttribute="top" secondItem="PK7-1h-Nem" secondAttribute="top" id="aGy-n2-Xu4"/>
+                            <constraint firstItem="VWG-rA-24A" firstAttribute="trailing" secondItem="PK7-1h-Nem" secondAttribute="trailing" id="dqg-0W-W5L"/>
+                            <constraint firstItem="VWG-rA-24A" firstAttribute="bottom" secondItem="Gmx-rB-giq" secondAttribute="bottom" id="obC-kL-kMk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PK7-1h-Nem"/>
                     </view>
