@@ -22,7 +22,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rej-Rw-DZY">
-                                <rect key="frame" x="159" y="326.66666666666669" width="96" height="82.666666666666686"/>
+                                <rect key="frame" x="159" y="326.66666666666669" width="96" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="83" id="Jcg-QK-8i3"/>
+                                    <constraint firstAttribute="width" constant="96" id="VLl-ag-mqq"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="fingerprint"/>
                                 <connections>
                                     <action selector="fingerPrintAuthenticationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ppg-kG-o9a"/>
@@ -31,14 +35,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Rej-Rw-DZY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="262.67000000000002" id="594-4J-IyV"/>
                             <constraint firstItem="ncL-b2-mul" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fy1-pt-mAe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rej-Rw-DZY" secondAttribute="trailing" constant="159" id="SUK-7h-32M"/>
-                            <constraint firstItem="Rej-Rw-DZY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="262.67000000000002" id="lCF-6L-gUN"/>
                             <constraint firstItem="ncL-b2-mul" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="nH4-Na-UZ6"/>
-                            <constraint firstItem="Rej-Rw-DZY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nz7-ov-hzb"/>
                             <constraint firstItem="ncL-b2-mul" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="oPB-Ht-ycr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rej-Rw-DZY" secondAttribute="trailing" constant="159" id="prB-Dg-z3J"/>
                             <constraint firstItem="ncL-b2-mul" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="q2y-ry-imi"/>
-                            <constraint firstItem="Rej-Rw-DZY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tOP-Ta-i4O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
