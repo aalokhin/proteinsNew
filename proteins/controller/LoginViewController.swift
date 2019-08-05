@@ -59,9 +59,14 @@ class LoginViewController: UIViewController {
 //            self.view.backgroundColor = UIColor(patternImage: backgroundImg)
 //        }
         touchIdButton.isHidden = true
-        print("hello")
+        print("hello from main")
         setUpLoginButton()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        touchIdButton.isHidden = true
+        print("hello from did appear")
+        setUpLoginButton()
     }
     
     @IBAction func fingerPrintAuthenticationTapped(_ sender: UIButton) {
